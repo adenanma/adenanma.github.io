@@ -30,29 +30,6 @@
             kataSemata<span class="text-primary">.</span>
           </h1>
           
-          <!-- Discount Banner -->
-          <div class="discount-banner mb-4">
-            <div class="discount-content">
-              <span>🎉 Promo Bulanan Spesial! 🎉
-
-                Bulan ini, nikmati penawaran menarik dari kami! Dapatkan diskon hingga 50% untuk produk pilihan. Jangan lewatkan kesempatan ini untuk berbelanja hemat!
-                
-                🛒 Belanja Sekarang, Hemat Selamanya! 🛒
-                
-                Bulan ini, setiap pembelian di atas [jumlah] akan mendapatkan bonus [produk/layanan]. Segera kunjungi toko kami dan manfaatkan promo ini sebelum kehabisan!
-                
-                🔥 Hanya di Bulan Ini! 🔥
-                
-                Bergabunglah dengan kami dan nikmati potongan harga eksklusif serta penawaran menarik lainnya. Setiap transaksi juga berkesempatan untuk mendapatkan hadiah menarik!
-                
-                ✨ Promo Spesial Bulan November! ✨
-                
-                Dapatkan pengalaman berbelanja yang tak terlupakan dengan diskon dan bonus menarik. Ayo, buktikan sendiri!</span>
-              
-            </div>
-          </div>
-
-          <p class="h4 text-primary mb-4" style="font-family: 'Montserrat';">Invitation Card Digital</p>
           <!-- Video Banner Card -->
           <div class="card video-banner mb-4">
             <video class="card-video" autoplay loop muted playsinline>
@@ -95,7 +72,8 @@
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
           }
           </style>
-
+          <!--END VIDEO BANNER-->
+          <p class="h4 text-primary mb-4" style="font-family: 'Montserrat';">Invitation Card Digital</p>
         </div>
       </div>
     </div>
@@ -126,17 +104,30 @@
 
 .discount-content {
   display: flex;
-  animation: scrollText 12s linear infinite;
   white-space: nowrap;
   gap: 1rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
 }
 
+
 .discount-content span {
   padding: 0 2rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    /* Starting position */
+ transform:translateX(0%);
+ /* Apply animation to this element */
+ animation: scrollText 60s linear infinite;
 }
+@keyframes scrollText {
+ 0%   {
+ transform: translateX(100%); 		
+ }
+ 100% {
+ transform: translateX(-100%); 
+ }
+}
+
 
 .bottom-bar {
   position: fixed;
@@ -233,6 +224,53 @@ sections.forEach(section => observer.observe(section));
     <div class="container py-4">
       <h1 class="display-4 fw-bold fst-italic mb-3 section2-title" style="font-family: 'Montserrat';">
         Wedding<br>Invitation</h1>
+        
+        <!--SCROLLING BANNER-->
+        <!-- Discount Banner -->
+        <div class="runningtext-weeding mb-4">
+          <div class="runningtext-weeding-content">
+            <!--<span>🎉 Promo Spesial Bulan Ini! Dapatkan Diskon 25% untuk Undangan Digital Premium ✨ Buat Momen Spesialmu Lebih Berkesan dengan Desain Eksklusif 💝 Promo Terbatas! 🎊
+            </span>-->
+            <span>🎉 Belum Ada Promo untuk Bulan Ini untuk Wedding Invitation! Tetap Pantau Terus Halaman Ini dan tanya-tanya ke admin untuk Mendapatkan Info Terbaru ✨ Buat Momen Spesialmu Lebih Berkesan dengan Desain Eksklusif 💝 Stay Tuned! 🎊
+            </span>
+          </div>
+        </div>
+        <style>
+        .runningtext-weeding {
+        background: linear-gradient(135deg, #009dff, #23f);
+        color: white;
+        padding: 0.8rem;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        }
+        .runningtext-weeding-content {
+        display: flex;
+        white-space: nowrap;
+        gap: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        }
+        .runningtext-weeding-content span {
+        padding: 0 2rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+          /* Starting position */
+        transform:translateX(0%);
+        /* Apply animation to this element */
+        animation: scrollText 40s linear infinite;
+        }
+        @keyframes scrollText {
+        0%   {
+        transform: translateX(20%); 		
+        }
+        100% {
+        transform: translateX(-100%); 
+        }
+        }
+        </style>
+        <!--END SCROLLING BANNER-->
+
       <div class="text-center mb-3">
         <button class="btn btn-outline-primary me-2" onclick="toggleFilters2()">
           <i class="bi bi-funnel"></i> Filter
@@ -505,6 +543,52 @@ fetch('wedding/wedding.json')
     <div class="container py-4">
       <h1 class="display-4 fw-bold fst-italic mb-3 section3-title" style="font-family: 'Montserrat';">
         Birthday<br>Invitation</h1>
+        
+        <!--SCROLLING BANNER-->
+        <div class="runningtext-birthday mb-4">
+          <div class="runningtext-birthday-content">
+            <!--<span>🎉 Promo Spesial Bulan Ini! Dapatkan Diskon 25% untuk Undangan Digital Premium ✨ Buat Momen Spesialmu Lebih Berkesan dengan Desain Eksklusif 💝 Promo Terbatas! 🎊
+            </span>-->
+            <span>🎉 Belum Ada Promo untuk Bulan Ini untuk Birthday Invitation! Tetap Pantau Terus Halaman Ini dan tanya-tanya ke admin untuk Mendapatkan Info Terbaru ✨ Buat Momen Spesialmu Lebih Berkesan dengan Desain Eksklusif 💝 Stay Tuned! 🎊
+            </span>
+          </div>
+        </div>
+        <style>
+        .runningtext-birthday {
+        background: linear-gradient(135deg, #009dff, #23f);
+        color: white;
+        padding: 0.8rem;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        }
+        .runningtext-birthday-content {
+        display: flex;
+        white-space: nowrap;
+        gap: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        }
+        .runningtext-birthday-content span {
+        padding: 0 2rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+          /* Starting position */
+        transform:translateX(0%);
+        /* Apply animation to this element */
+        animation: scrollText 40s linear infinite;
+        }
+        @keyframes scrollText {
+        0%   {
+        transform: translateX(20%); 		
+        }
+        100% {
+        transform: translateX(-100%); 
+        }
+        }
+        </style>
+        <!--END SCROLLING BANNER-->
+
       <div class="text-center mb-3">
         <button class="btn btn-outline-primary me-2" onclick="toggleFilters3()">
           <i class="bi bi-funnel"></i> Filter
@@ -777,6 +861,52 @@ fetch('birthday/birthday.json')
     <div class="container py-4">
       <h1 class="display-4 fw-bold fst-italic mb-3 section4-title" style="font-family: 'Montserrat';">
         Graduation<br>Invitation</h1>
+
+                <!--SCROLLING BANNER-->
+        <div class="runningtext-graduation mb-4">
+          <div class="runningtext-graduation-content">
+            <!--<span>🎉 Promo Spesial Bulan Ini! Dapatkan Diskon 25% untuk Undangan Digital Premium ✨ Buat Momen Spesialmu Lebih Berkesan dengan Desain Eksklusif 💝 Promo Terbatas! 🎊
+            </span>-->
+            <span>🎉 Belum Ada Promo untuk Bulan Ini untuk Graduation Invitation! Tetap Pantau Terus Halaman Ini dan tanya-tanya ke admin untuk Mendapatkan Info Terbaru ✨ Buat Momen Spesialmu Lebih Berkesan dengan Desain Eksklusif 💝 Stay Tuned! 🎊
+            </span>
+          </div>
+        </div>
+        <style>
+        .runningtext-graduation {
+        background: linear-gradient(135deg, #009dff, #23f);
+        color: white;
+        padding: 0.8rem;
+        overflow: hidden;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        }
+        .runningtext-graduation-content {
+        display: flex;
+        white-space: nowrap;
+        gap: 1rem;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 600;
+        }
+        .runningtext-graduation-content span {
+        padding: 0 2rem;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+          /* Starting position */
+        transform:translateX(0%);
+        /* Apply animation to this element */
+        animation: scrollText 40s linear infinite;
+        }
+        @keyframes scrollText {
+        0%   {
+        transform: translateX(20%); 		
+        }
+        100% {
+        transform: translateX(-100%); 
+        }
+        }
+        </style>
+        <!--END SCROLLING BANNER-->
+
       <div class="text-center mb-3">
         <button class="btn btn-outline-primary me-2" onclick="toggleFilters4()">
           <i class="bi bi-funnel"></i> Filter
