@@ -1,23 +1,95 @@
 {
-    "packages": [
-      {
-        "title": "Themes 1",
-        "price": "Rp 150.000",
-        "image": "birthday/images/LOGO.jpeg", 
-        "category": "Birthday Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      },
-      {
-        "title": "Themes 1",
-        "price": "Rp 250.000",
-        "video": "birthday/videos/tema1.mp4",
-        "category": "Birthday Invitation", 
-        "featured": false,
-        "type": "video",
-        "link": "https://adenanma.github.io/web"
-      }
-    ]
+  "packages": [
+    {
+      "title": "Themes 1",
+      "price": "Rp 2.500.000",
+      "image": "birthday/images/themes 1.jpg",
+      "category": "Birthday Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 2",
+      "price": "Rp 2.500.000",
+      "image": "birthday/images/themes 2.jpg",
+      "category": "Birthday Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 3",
+      "price": "Rp 2.500.000",
+      "image": "birthday/images/themes 3.jpg",
+      "category": "Birthday Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 4",
+      "price": "Rp 2.500.000",
+      "image": "birthday/images/themes 4.jpg",
+      "category": "Birthday Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 5",
+      "price": "Rp 2.500.000",
+      "image": "birthday/images/themes 5.jpg",
+      "category": "Birthday Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 6",
+      "price": "Rp 2.500.000",
+      "image": "birthday/images/themes 6.jpg",
+      "category": "Birthday Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 7",
+      "price": "Rp 2.500.000",
+      "image": "birthday/images/themes 7.jpg",
+      "category": "Birthday Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 8",
+      "price": "Rp 2.500.000",
+      "image": "birthday/images/themes 8.jpg",
+      "category": "Birthday Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 9",
+      "price": "Rp 2.500.000",
+      "image": "birthday/images/themes 9.jpg",
+      "category": "Birthday Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 10",
+      "price": "Rp 2.500.000",
+      "image": "birthday/images/themes 10.jpg",
+      "category": "Birthday Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    }
+  ]
 }
 
