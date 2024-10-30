@@ -1,0 +1,23 @@
+{
+    "packages": [
+      {
+        "title": "Themes 1",
+        "price": "Rp 150.000",
+        "image": "birthday/images/LOGO.jpeg", 
+        "category": "Birthday Invitation",
+        "featured": false,
+        "type": "image",
+        "link": "https://adenanma.github.io/web"
+      },
+      {
+        "title": "Themes 1",
+        "price": "Rp 250.000",
+        "video": "birthday/videos/tema1.mp4",
+        "category": "Birthday Invitation", 
+        "featured": false,
+        "type": "video",
+        "link": "https://adenanma.github.io/web"
+      }
+    ]
+}
+
