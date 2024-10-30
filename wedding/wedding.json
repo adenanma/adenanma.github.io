@@ -1,0 +1,41 @@
+{
+  "packages": [
+    {
+      "title": "Themes 1",
+      "price": "Rp 2.500.000",
+      "image": "wedding/images/LOGO.jpeg",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 1",
+      "price": "Rp 4.500.000", 
+      "video": "wedding/videos/tema1.mp4",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "video",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 2",
+      "price": "Rp 2.500.000",
+      "image": "wedding/images/LOGO.jpeg",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 2",
+      "price": "Rp 4.500.000", 
+      "video": "wedding/videos/tema1.mp4",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "video",
+      "link": "https://adenanma.github.io/web"
+    }
+  ]
+}
+
