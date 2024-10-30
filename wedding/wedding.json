@@ -10,15 +10,6 @@
       "link": "https://adenanma.github.io/web"
     },
     {
-      "title": "Themes 1",
-      "price": "Rp 4.500.000", 
-      "video": "wedding/videos/tema1.mp4",
-      "category": "Wedding Invitation",
-      "featured": false,
-      "type": "video",
-      "link": "https://adenanma.github.io/web"
-    },
-    {
       "title": "Themes 2",
       "price": "Rp 2.500.000",
       "image": "wedding/images/LOGO.jpeg",
@@ -28,12 +19,75 @@
       "link": "https://adenanma.github.io/web"
     },
     {
-      "title": "Themes 2",
-      "price": "Rp 4.500.000", 
-      "video": "wedding/videos/tema1.mp4",
+      "title": "Themes 3",
+      "price": "Rp 2.500.000",
+      "image": "wedding/images/LOGO.jpeg",
       "category": "Wedding Invitation",
       "featured": false,
-      "type": "video",
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 4",
+      "price": "Rp 2.500.000",
+      "image": "wedding/images/LOGO.jpeg",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 5",
+      "price": "Rp 2.500.000",
+      "image": "wedding/images/LOGO.jpeg",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 6",
+      "price": "Rp 2.500.000",
+      "image": "wedding/images/LOGO.jpeg",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 7",
+      "price": "Rp 2.500.000",
+      "image": "wedding/images/LOGO.jpeg",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 8",
+      "price": "Rp 2.500.000",
+      "image": "wedding/images/LOGO.jpeg",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 9",
+      "price": "Rp 2.500.000",
+      "image": "wedding/images/LOGO.jpeg",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "image",
+      "link": "https://adenanma.github.io/web"
+    },
+    {
+      "title": "Themes 10",
+      "price": "Rp 2.500.000",
+      "image": "wedding/images/LOGO.jpeg",
+      "category": "Wedding Invitation",
+      "featured": false,
+      "type": "image",
       "link": "https://adenanma.github.io/web"
     }
   ]
