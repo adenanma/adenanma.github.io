@@ -22,7 +22,7 @@
 
 <!-- Section 1 -->
 <div class="container-fluid p-0">
-  <section class="min-vh-100 d-flex align-items-center section1" style="background-color: #dcdcdc;">
+  <section class="min-vh-100 d-flex align-items-center section1" style="background-color: #F8F9FA;">
     <div class="container">
       <div class="row justify-content-center min-vh-100 align-items-center">
         <div class="col-12 col-md-10 col-lg-8 text-center">
@@ -177,11 +177,13 @@ sections.forEach(section => observer.observe(section));
 </script>
 <!-- end section 1 -->
 
+
 <!-- Section 2 -->
 <div class="container-fluid p-0">
-  <section id="section2" class="min-vh-100 d-flex align-items-center section2 pb-4 mb-4 mt-5 pt-5" style="background-color: #dcdcdc; margin-bottom: 80px;">
+  <section id="section2" class="min-vh-100 d-flex align-items-center section2 pb-4 mb-4 mt-5 pt-5" style="background-color: #F8F9FA; margin-bottom: 80px;">
     <div class="container py-4">
-      <h2 class="text-center mb-4 fw-bold" style="font-family: 'Montserrat';">WEDDING INVITATION</h2>
+      <h1 class="display-4 fw-bold fst-italic mb-3 section2-title" style="font-family: 'Montserrat';">
+        Wedding Invitation</h1>
       <div class="text-center mb-3">
         <button class="btn btn-outline-primary me-2" onclick="toggleFilters2()">
           <i class="bi bi-funnel"></i> Filter
@@ -203,12 +205,23 @@ sections.forEach(section => observer.observe(section));
 </div>
 
 <style>
+  .section2-title {
+  overflow: hidden;
+  border-right: 0.15em solid #000;
+  white-space: nowrap;
+  animation: typing 5.5s cubic-bezier(0.4, 0, 0.2, 2.3) infinite,
+             blink-caret 0.75s ease-in-out infinite;
+  width: fit-content;
+  margin: 0 auto;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+}
 .card {
   border: none;
   transition: transform 0.3s ease;
   border-radius: 12px;
   overflow: hidden;
-  max-width: 250px;
+  max-width: 300px; /* Diubah dari 250px menjadi 300px */
   margin: 0 auto;
 }
 
@@ -217,7 +230,7 @@ sections.forEach(section => observer.observe(section));
 }
 
 .card-img-top {
-  height: 200px; /* Diubah dari 300px menjadi 200px */
+  height: 250px; /* Diubah dari 200px menjadi 250px */
   object-fit: cover;
   filter: brightness(0.9);
   transition: filter 0.3s ease;
@@ -235,16 +248,16 @@ sections.forEach(section => observer.observe(section));
   background: #23f;
   color: white;
   padding: 4px 35px;
-  font-size: 0.75rem;
+  font-size: 0.85rem; /* Diubah dari 0.75rem menjadi 0.85rem */
   font-weight: bold;
 }
 
 .btn-primary {
-  padding: 6px 15px;
+  padding: 8px 20px; /* Diubah dari 6px 15px menjadi 8px 20px */
   border-radius: 20px;
   font-weight: 600;
   transition: all 0.3s ease;
-  font-size: 0.8rem;
+  font-size: 0.9rem; /* Diubah dari 0.8rem menjadi 0.9rem */
 }
 
 .btn-primary:hover {
@@ -261,7 +274,7 @@ sections.forEach(section => observer.observe(section));
   margin-bottom: 0.75rem;
   border-radius: 15px;
   transition: all 0.3s ease;
-  font-size: 0.8rem;
+  font-size: 0.9rem; /* Diubah dari 0.8rem menjadi 0.9rem */
 }
 
 .filter-btn.active {
@@ -279,72 +292,72 @@ sections.forEach(section => observer.observe(section));
 
 .card-body {
   background: rgba(255,255,255,0.9);
-  padding: 0.75rem;
+  padding: 1rem; /* Diubah dari 0.75rem menjadi 1rem */
 }
 
 .card-title {
   color: #333;
   font-weight: bold;
   margin-bottom: 0.5rem;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Diubah dari 0.9rem menjadi 1rem */
 }
 
 .card-text {
   color: #0d6efd;
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1rem; /* Diubah dari 0.9rem menjadi 1rem */
 }
 
 @media (max-width: 1200px) {
   .card-body {
-    padding: 0.75rem;
+    padding: 0.9rem; /* Diubah dari 0.75rem menjadi 0.9rem */
   }
   
   .card-title {
-    font-size: 0.85rem;
+    font-size: 0.95rem; /* Diubah dari 0.85rem menjadi 0.95rem */
   }
 }
 
 @media (max-width: 992px) {
   .card-body {
-    padding: 0.625rem;
+    padding: 0.8rem; /* Diubah dari 0.625rem menjadi 0.8rem */
   }
   
   .card-title {
-    font-size: 0.8rem;
+    font-size: 0.9rem; /* Diubah dari 0.8rem menjadi 0.9rem */
   }
 }
 
 @media (max-width: 768px) {
   .card-body {
-    padding: 0.5rem;
+    padding: 0.7rem; /* Diubah dari 0.5rem menjadi 0.7rem */
   }
   
   .card-title {
-    font-size: 0.75rem;
+    font-size: 0.85rem; /* Diubah dari 0.75rem menjadi 0.85rem */
   }
   
   .btn-primary {
-    padding: 4px 12px;
-    font-size: 0.75rem;
+    padding: 6px 15px; /* Diubah dari 4px 12px menjadi 6px 15px */
+    font-size: 0.85rem; /* Diubah dari 0.75rem menjadi 0.85rem */
   }
   
   .list-unstyled li {
-    font-size: 0.75rem;
+    font-size: 0.85rem; /* Diubah dari 0.75rem menjadi 0.85rem */
   }
 }
 
 @media (max-width: 576px) {
   .card-body {
-    padding: 0.5rem;
+    padding: 0.6rem; /* Diubah dari 0.5rem menjadi 0.6rem */
   }
   
   .card-title {
-    font-size: 0.7rem;
+    font-size: 0.8rem; /* Diubah dari 0.7rem menjadi 0.8rem */
   }
   
   .list-unstyled li {
-    font-size: 0.7rem;
+    font-size: 0.8rem; /* Diubah dari 0.7rem menjadi 0.8rem */
   }
 }
 </style>
@@ -432,9 +445,10 @@ fetch('wedding/wedding.json')
 
 <!-- Section 3 -->
 <div class="container-fluid p-0">
-  <section id="section3" class="min-vh-100 d-flex align-items-center section3 pb-4 mb-4 mt-5 pt-5" style="background-color: #dcdcdc; margin-bottom: 80px;">
+  <section id="section3" class="min-vh-100 d-flex align-items-center section3 pb-4 mb-4 mt-5 pt-5" style="background-color: #F8F9FA; margin-bottom: 80px;">
     <div class="container py-4">
-      <h2 class="text-center mb-4 fw-bold" style="font-family: 'Montserrat';">BIRTHDAY INVITATION</h2>
+      <h1 class="display-4 fw-bold fst-italic mb-3 section3-title" style="font-family: 'Montserrat';">
+        Birthday Invitation</h1>
       <div class="text-center mb-3">
         <button class="btn btn-outline-primary me-2" onclick="toggleFilters3()">
           <i class="bi bi-funnel"></i> Filter
@@ -456,11 +470,24 @@ fetch('wedding/wedding.json')
 </div>
 
 <style>
+  .section3-title {
+  overflow: hidden;
+  border-right: 0.15em solid #000;
+  white-space: nowrap;
+  animation: typing 5.5s cubic-bezier(0.4, 0, 0.2, 2.3) infinite,
+             blink-caret 0.75s ease-in-out infinite;
+  width: fit-content;
+  margin: 0 auto;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: all 0.5s ease;
+}
 .card {
   border: none;
   transition: transform 0.3s ease;
   border-radius: 12px;
   overflow: hidden;
+  max-width: 300px; /* Diubah dari 250px menjadi 300px */
+  margin: 0 auto;
 }
 
 .card:hover {
@@ -468,7 +495,7 @@ fetch('wedding/wedding.json')
 }
 
 .card-img-top {
-  height: 400px;
+  height: 250px; /* Diubah dari 200px menjadi 250px */
   object-fit: cover;
   filter: brightness(0.9);
   transition: filter 0.3s ease;
@@ -486,15 +513,16 @@ fetch('wedding/wedding.json')
   background: #23f;
   color: white;
   padding: 4px 35px;
-  font-size: 0.75rem;
+  font-size: 0.85rem; /* Diubah dari 0.75rem menjadi 0.85rem */
   font-weight: bold;
 }
 
 .btn-primary {
-  padding: 8px 25px;
+  padding: 8px 20px; /* Diubah dari 6px 15px menjadi 8px 20px */
   border-radius: 20px;
   font-weight: 600;
   transition: all 0.3s ease;
+  font-size: 0.9rem; /* Diubah dari 0.8rem menjadi 0.9rem */
 }
 
 .btn-primary:hover {
@@ -511,6 +539,7 @@ fetch('wedding/wedding.json')
   margin-bottom: 0.75rem;
   border-radius: 15px;
   transition: all 0.3s ease;
+  font-size: 0.9rem; /* Diubah dari 0.8rem menjadi 0.9rem */
 }
 
 .filter-btn.active {
@@ -528,71 +557,72 @@ fetch('wedding/wedding.json')
 
 .card-body {
   background: rgba(255,255,255,0.9);
-  padding: 1rem;
+  padding: 1rem; /* Diubah dari 0.75rem menjadi 1rem */
 }
 
 .card-title {
   color: #333;
   font-weight: bold;
   margin-bottom: 0.5rem;
+  font-size: 1rem; /* Diubah dari 0.9rem menjadi 1rem */
 }
 
 .card-text {
   color: #0d6efd;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem; /* Diubah dari 0.9rem menjadi 1rem */
 }
 
 @media (max-width: 1200px) {
   .card-body {
-    padding: 1rem;
+    padding: 0.9rem; /* Diubah dari 0.75rem menjadi 0.9rem */
   }
   
   .card-title {
-    font-size: 1.25rem;
+    font-size: 0.95rem; /* Diubah dari 0.85rem menjadi 0.95rem */
   }
 }
 
 @media (max-width: 992px) {
   .card-body {
-    padding: 0.875rem;
+    padding: 0.8rem; /* Diubah dari 0.625rem menjadi 0.8rem */
   }
   
   .card-title {
-    font-size: 1.15rem;
+    font-size: 0.9rem; /* Diubah dari 0.8rem menjadi 0.9rem */
   }
 }
 
 @media (max-width: 768px) {
   .card-body {
-    padding: 0.75rem;
+    padding: 0.7rem; /* Diubah dari 0.5rem menjadi 0.7rem */
   }
   
   .card-title {
-    font-size: 1.1rem;
+    font-size: 0.85rem; /* Diubah dari 0.75rem menjadi 0.85rem */
   }
   
   .btn-primary {
-    padding: 6px 15px;
-    font-size: 0.85rem;
+    padding: 6px 15px; /* Diubah dari 4px 12px menjadi 6px 15px */
+    font-size: 0.85rem; /* Diubah dari 0.75rem menjadi 0.85rem */
   }
   
   .list-unstyled li {
-    font-size: 0.85rem;
+    font-size: 0.85rem; /* Diubah dari 0.75rem menjadi 0.85rem */
   }
 }
 
 @media (max-width: 576px) {
   .card-body {
-    padding: 0.625rem;
+    padding: 0.6rem; /* Diubah dari 0.5rem menjadi 0.6rem */
   }
   
   .card-title {
-    font-size: 1rem;
+    font-size: 0.8rem; /* Diubah dari 0.7rem menjadi 0.8rem */
   }
   
   .list-unstyled li {
-    font-size: 0.8rem;
+    font-size: 0.8rem; /* Diubah dari 0.7rem menjadi 0.8rem */
   }
 }
 </style>
@@ -623,7 +653,7 @@ fetch('birthday/birthday.json')
     
     packages.packages.forEach(pkg => {
       const card = document.createElement('div');
-      card.className = 'col-6 col-md-6 package-card';
+      card.className = 'col-6 col-md-4 col-lg-3 package-card';
       card.setAttribute('data-category', pkg.title);
       
       const cardContent = `
@@ -673,124 +703,153 @@ fetch('birthday/birthday.json')
     document.querySelector('#filterButtons3 [data-filter="all"]').click();
   })
   .catch(error => {
-    console.error('Error loading wedding.json:', error);
+    console.error('Error loading birthday.json:', error);
   });
 </script>
 <!-- end section 3 -->
 
+
 <!-- Navbar Bottom -->
 <div class="mb-5 pb-5"></div>
-<nav class="navbar fixed-bottom bg-white shadow-lg" style="border-top-left-radius: 50px; border-top-right-radius: 50px;">
+<nav class="navbar fixed-bottom">
   <div class="container-fluid">
-    <div class="row w-100 text-center">
-      <div class="col position-relative">
-        <a href="#" class="text-decoration-none d-flex flex-column align-items-center nav-link">
+    <div class="nav-popup">
+      <button class="nav-toggle" onclick="toggleNav()">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+      <div class="nav-content" id="navContent">
+        <a href="#" class="nav-item">
           <div class="nav-icon-wrapper">
-            <i class="bi bi-house-fill fs-4 nav-icon"></i>
+            <i class="bi bi-house-fill fs-4"></i>
           </div>
-          <p class="mb-0 small nav-label">Beranda</p>
+          <span>Beranda</span>
         </a>
-        <div class="nav-indicator"></div>
-      </div>
-      <div class="col position-relative">
-        <a href="#section2" class="text-decoration-none d-flex flex-column align-items-center nav-link">
+        <a href="#section2" class="nav-item">
           <div class="nav-icon-wrapper">
-            <img src="wedding.svg" alt="Wedding" class="nav-icon" style="width: 24px; height: 24px;">
+            <img src="wedding.svg" alt="Wedding" style="width: 24px; height: 24px;">
           </div>
-          <p class="mb-0 small nav-label">Wedding</p>
+          <span>Wedding</span>
         </a>
-        <div class="nav-indicator"></div>
-      </div>
-      <div class="col position-relative">
-        <a href="#section3" class="text-decoration-none d-flex flex-column align-items-center nav-link">
+        <a href="#section3" class="nav-item">
           <div class="nav-icon-wrapper">
-            <img src="birthday.svg" alt="Birthday" class="nav-icon" style="width: 24px; height: 24px;">
+            <img src="birthday.svg" alt="Birthday" style="width: 24px; height: 24px;">
           </div>
-          <p class="mb-0 small nav-label">Birthday</p>
+          <span>Birthday</span>
         </a>
-        <div class="nav-indicator"></div>
       </div>
-      <!--content navbar bottom-->
     </div>
   </div>
 </nav>
 
 <style>
 .navbar {
-  padding: 0.5rem 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.nav-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.nav-toggle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #0d6efd;
+  border: none;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.nav-link {
-  position: relative;
-  padding: 0.5rem;
-  color: #6c757d !important;
-  transition: color 0.3s ease;
+.nav-toggle:hover {
+  transform: scale(1.1);
 }
 
-.nav-link:hover {
-  color: #0d6efd !important;
+.nav-content {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  background: white;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: none;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 150px;
+}
+
+.nav-content.show {
+  display: flex;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  color: #6c757d;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  background: #f8f9fa;
+  color: #0d6efd;
+  transform: translateX(-5px);
 }
 
 .nav-icon-wrapper {
-  position: relative;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: #f8f9fa;
   border-radius: 50%;
-  margin-bottom: 4px;
   transition: all 0.3s ease;
 }
 
-.nav-link:hover .nav-icon-wrapper {
+.nav-item:hover .nav-icon-wrapper {
   background: #e7f1ff;
-  transform: translateY(-5px);
-}
-
-.nav-icon {
-  transition: transform 0.3s ease;
-}
-
-.nav-link:hover .nav-icon {
-  transform: scale(1.1);
-}
-
-.nav-label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  margin-top: 2px;
-}
-
-.nav-indicator {
-  position: absolute;
-  bottom: -8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 3px;
-  background: #0d6efd;
-  border-radius: 3px;
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover + .nav-indicator {
-  width: 20px;
 }
 
 @media (max-width: 576px) {
-  .nav-icon-wrapper {
-    width: 32px;
-    height: 32px;
+  .nav-popup {
+    bottom: 15px;
+    right: 15px;
   }
   
-  .nav-label {
-    font-size: 0.7rem;
+  .nav-toggle {
+    width: 50px;
+    height: 50px;
   }
 }
 </style>
+
+<script>
+function toggleNav() {
+  const navContent = document.getElementById('navContent');
+  navContent.classList.toggle('show');
+}
+
+// Close nav when clicking outside
+document.addEventListener('click', (e) => {
+  const navContent = document.getElementById('navContent');
+  const navPopup = document.querySelector('.nav-popup');
+  
+  if (!navPopup.contains(e.target)) {
+    navContent.classList.remove('show');
+  }
+});
+</script>
 
 </body>
 </html>
