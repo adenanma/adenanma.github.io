@@ -46,6 +46,12 @@
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          .video-banner:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
           }
 
           .card-video {
@@ -53,23 +59,31 @@
             height: 450px;
             object-fit: cover;
             filter: brightness(0.8);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          .video-banner:hover .card-video {
+            filter: brightness(1);
           }
 
           .card-img-overlay {
             background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
             padding: 3rem;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           }
 
           .card-title {
             font-size: 2rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           }
 
           .card-text {
             font-size: 1.25rem;
             margin-bottom: 1.5rem;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
           }
           </style>
           <!--END VIDEO BANNER-->
@@ -90,6 +104,7 @@
   width: fit-content;
   margin: 0 auto;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.504);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .discount-banner {
@@ -100,6 +115,7 @@
   position: relative;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   border-radius: 8px;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .discount-content {
@@ -108,6 +124,7 @@
   gap: 1rem;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -118,6 +135,7 @@
  transform:translateX(0%);
  /* Apply animation to this element */
  animation: scrollText 60s linear infinite;
+ transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 @keyframes scrollText {
  0%   {
@@ -141,6 +159,7 @@
   align-items: center;
   border-radius: 50px 50px 0 0;
   z-index: 1000;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon {
@@ -149,7 +168,7 @@
   border-radius: 50%;
   border: 7px solid white;
   cursor: pointer;
-  transition: 0.3s ease-in-out;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon.active {
@@ -157,6 +176,7 @@
   background: linear-gradient(135deg, #23f, #6589ff);
   border: 7px solid #dcdcdc;
   color: white;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes typing {
@@ -244,6 +264,7 @@ sections.forEach(section => observer.observe(section));
         position: relative;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         border-radius: 8px;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .runningtext-weeding-content {
         display: flex;
@@ -251,6 +272,7 @@ sections.forEach(section => observer.observe(section));
         gap: 1rem;
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .runningtext-weeding-content span {
         padding: 0 2rem;
@@ -259,6 +281,7 @@ sections.forEach(section => observer.observe(section));
         transform:translateX(0%);
         /* Apply animation to this element */
         animation: scrollText 40s linear infinite;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         @keyframes scrollText {
         0%   {
@@ -299,11 +322,11 @@ sections.forEach(section => observer.observe(section));
   width: fit-content;
   margin: 0 auto;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  transition: all 0.5s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card {
   border: none;
-  transition: transform 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 12px;
   overflow: hidden;
   max-width: 300px;
@@ -318,7 +341,7 @@ sections.forEach(section => observer.observe(section));
   height: 250px;
   object-fit: cover;
   filter: brightness(0.9);
-  transition: filter 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover .card-img-top {
@@ -335,13 +358,14 @@ sections.forEach(section => observer.observe(section));
   padding: 4px 35px;
   font-size: 0.85rem;
   font-weight: bold;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary {
   padding: 8px 20px;
   border-radius: 20px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.9rem;
 }
 
@@ -352,13 +376,13 @@ sections.forEach(section => observer.observe(section));
 
 .filter-buttons {
   margin-top: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-btn {
   margin-bottom: 0.75rem;
   border-radius: 15px;
-  transition: all 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.9rem;
 }
 
@@ -368,7 +392,7 @@ sections.forEach(section => observer.observe(section));
 }
 
 .package-card {
-  transition: all 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .package-card.hide {
@@ -378,6 +402,7 @@ sections.forEach(section => observer.observe(section));
 .card-body {
   background: rgba(255,255,255,0.9);
   padding: 1rem;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-title {
@@ -385,12 +410,14 @@ sections.forEach(section => observer.observe(section));
   font-weight: bold;
   margin-bottom: 0.5rem;
   font-size: 1rem;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-text {
   color: #0d6efd;
   font-weight: bold;
   font-size: 1rem;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (max-width: 1200px) {
@@ -562,6 +589,7 @@ fetch('wedding/wedding.json')
         position: relative;
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         border-radius: 8px;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .runningtext-birthday-content {
         display: flex;
@@ -569,6 +597,7 @@ fetch('wedding/wedding.json')
         gap: 1rem;
         font-family: 'Montserrat', sans-serif;
         font-weight: 600;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .runningtext-birthday-content span {
         padding: 0 2rem;
@@ -577,6 +606,7 @@ fetch('wedding/wedding.json')
         transform:translateX(0%);
         /* Apply animation to this element */
         animation: scrollText 40s linear infinite;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
         @keyframes scrollText {
         0%   {
@@ -617,11 +647,11 @@ fetch('wedding/wedding.json')
   width: fit-content;
   margin: 0 auto;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  transition: all 0.5s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .card {
   border: none;
-  transition: transform 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   border-radius: 12px;
   overflow: hidden;
   max-width: 300px;
@@ -636,7 +666,7 @@ fetch('wedding/wedding.json')
   height: 250px;
   object-fit: cover;
   filter: brightness(0.9);
-  transition: filter 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover .card-img-top {
@@ -653,13 +683,14 @@ fetch('wedding/wedding.json')
   padding: 4px 35px;
   font-size: 0.85rem;
   font-weight: bold;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .btn-primary {
   padding: 8px 20px;
   border-radius: 20px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.9rem;
 }
 
@@ -670,13 +701,13 @@ fetch('wedding/wedding.json')
 
 .filter-buttons {
   margin-top: 1rem;
-  transition: all 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-btn {
   margin-bottom: 0.75rem;
   border-radius: 15px;
-  transition: all 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   font-size: 0.9rem;
 }
 
@@ -686,7 +717,7 @@ fetch('wedding/wedding.json')
 }
 
 .package-card {
-  transition: all 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .package-card.hide {
@@ -696,6 +727,7 @@ fetch('wedding/wedding.json')
 .card-body {
   background: rgba(255,255,255,0.9);
   padding: 1rem;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card-title {
