@@ -36,57 +36,358 @@
               <source src="ads/adsnewtheme.mp4" type="video/mp4">
               Browser Anda tidak mendukung tag video.
             </video>
+            
+            <!-- Action Buttons Container -->
+            <div class="action-buttons">
+              <a href="#" class="action-btn preview-btn">
+                <i class="bi bi-eye-fill"></i>
+                <span>Lihat Preview</span>
+              </a>
+              <a href="https://wa.me/+6281234567890?text=Halo,%20saya%20tertarik%20dengan%20tema%20undangan%20digital%20ini" target="_blank" class="action-btn whatsapp-btn">
+                <i class="bi bi-whatsapp"></i>
+                <span>Pesan Sekarang</span>
+              </a>
+            </div>
+            
+            <!-- Discount Corner Banner -->
+            <div class="discount-corner">
+              <div class="discount-badge">
+                <span class="discount-text">DISKON</span>
+                <span class="discount-amount">50%</span>
+                <span class="discount-off">OFF</span>
+              </div>
+            </div>
+
+            <!-- Floating Discount Info -->
+            <div class="floating-discount">
+              <div class="floating-content">
+                <div class="timer-section">
+                  <div class="timer-title">⏰ WAKTU TERBATAS!</div>
+                  <div class="countdown" id="countdown">
+                    <div class="time-block">
+                      <span class="time" id="days">1</span>
+                      <span class="label">Hari</span>
+                    </div>
+                    <div class="time-block">
+                      <span class="time" id="hours">00</span>
+                      <span class="label">Jam</span>
+                    </div>
+                    <div class="time-block">
+                      <span class="time" id="minutes">00</span>
+                      <span class="label">Menit</span>
+                    </div>
+                    <div class="time-block">
+                      <span class="time" id="seconds">00</span>
+                      <span class="label">Detik</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="promo-text">
+                  <span class="highlight">🎉 PROMO SPESIAL! 🎉</span>
+                  <span class="detail">Dapatkan Diskon 50% + Bonus Eksklusif</span>
+                </div>
+              </div>
+            </div>
           </div>
+
           <style>
           .video-banner {
-            border-radius: 20px;
+            border-radius: clamp(8px, 2vw, 20px);
             overflow: hidden;
             position: relative;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
             width: 100%;
-            max-width: 800px;
+            max-width: min(800px, 92vw);
             margin: 0 auto;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
+          }
+
+          @media (max-width: 768px) {
+            .video-banner {
+              max-width: 95vw;
+              border-radius: 8px;
+            }
           }
 
           .video-banner:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+          }
+
+          @media (hover: none) {
+            .video-banner:hover {
+              transform: none;
+              box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            }
           }
 
           .card-video {
             width: 100%;
-            height: 450px;
+            height: clamp(300px, 85vh, 1200px); /* Ditingkatkan dari 70vh ke 85vh */
             object-fit: cover;
-            filter: brightness(0.8);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.85);
+            transition: all 0.4s ease;
+          }
+
+          @media (max-width: 576px) {
+            .card-video {
+              height: clamp(250px, 75vh, 1000px); /* Ditingkatkan dari 60vh ke 75vh */
+            }
           }
 
           .video-banner:hover .card-video {
             filter: brightness(1);
           }
 
-          .card-img-overlay {
-            background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-            padding: 3rem;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          @media (hover: none) {
+            .video-banner:hover .card-video {
+              filter: brightness(0.85);
+            }
           }
 
-          .card-title {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          /* Action Buttons Style */
+          .action-buttons {
+            position: absolute;
+            top: clamp(8px, 2vw, 15px);
+            left: clamp(8px, 2vw, 15px);
+            right: clamp(8px, 2vw, 15px);
+            display: flex;
+            gap: clamp(6px, 1.5vw, 10px);
+            z-index: 20;
+            flex-wrap: wrap;
           }
 
-          .card-text {
-            font-size: 1.25rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+          .action-btn {
+            display: flex;
+            align-items: center;
+            gap: clamp(4px, 1vw, 8px);
+            padding: clamp(6px, 1.5vw, 10px) clamp(12px, 2.5vw, 20px);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(0.75rem, 2vw, 0.9rem);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            white-space: nowrap;
+          }
+
+          .preview-btn {
+            background: linear-gradient(135deg, #0D6EFD, cyan);
+            color: white;
+          }
+
+          .whatsapp-btn {
+            background: linear-gradient(135deg, cyan, #0D6EFD);
+            color: white;
+          }
+
+          .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          }
+
+          .action-btn i {
+            font-size: clamp(1em, 2.5vw, 1.1em);
+          }
+
+          /* Corner Discount Style */
+          .discount-corner {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            z-index: 20;
+            animation: bounce 2s infinite;
+            transform: scale(clamp(0.6, 0.7vw, 0.7));
+          }
+
+          .discount-badge {
+            background: linear-gradient(135deg, #FF416C, #FF4B2B);
+            color: white;
+            padding: clamp(0.4rem, 1vw, 0.6rem);
+            border-radius: clamp(6px, 1.5vw, 8px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .discount-text {
+            font-size: clamp(0.5em, 1.2vw, 0.6em);
+            font-weight: 700;
+            letter-spacing: 1px;
+          }
+
+          .discount-amount {
+            font-size: clamp(1.2em, 2.5vw, 1.5em);
+            font-weight: 800;
+            line-height: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+          }
+
+          .discount-off {
+            font-size: clamp(0.6em, 1.4vw, 0.7em);
+            font-weight: 600;
+          }
+
+          /* Floating Discount Info Style */
+          .floating-discount {
+            position: absolute;
+            bottom: clamp(8px, 2vw, 15px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(45deg, #FF416C, #FF4B2B);
+            padding: clamp(0.8rem, 1.5vw, 1.2rem);
+            border-radius: clamp(12px, 3vw, 20px);
+            box-shadow: 0 8px 32px rgba(255, 65, 108, 0.3);
+            backdrop-filter: blur(8px);
+            width: min(95%, 450px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: pulse 2s infinite;
+          }
+
+          @keyframes pulse {
+            0% {
+              transform: translateX(-50%) scale(1);
+            }
+            50% {
+              transform: translateX(-50%) scale(1.02);
+            }
+            100% {
+              transform: translateX(-50%) scale(1);
+            }
+          }
+
+          .floating-content {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(0.5rem, 1.2vw, 0.8rem);
+          }
+
+          .timer-section {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: clamp(0.5rem, 1vw, 0.8rem);
+            border-radius: 10px;
+          }
+
+          .timer-title {
+            font-size: clamp(0.8em, 1.8vw, 1em);
+            color: #FFD700;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: clamp(0.4rem, 1vw, 0.6rem);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+          }
+
+          .countdown {
+            display: flex;
+            justify-content: center;
+            gap: clamp(0.8rem, 2vw, 1.2rem);
+          }
+
+          .time-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: clamp(0.3rem, 0.8vw, 0.5rem);
+            border-radius: 8px;
+            min-width: clamp(3rem, 8vw, 4rem);
+          }
+
+          .time {
+            font-size: clamp(1.2em, 2.5vw, 1.5em);
+            font-weight: 700;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+          }
+
+          .label {
+            font-size: clamp(0.6em, 1.3vw, 0.7em);
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+          }
+
+          .promo-text {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: clamp(0.5rem, 1vw, 0.8rem);
+            border-radius: 10px;
+          }
+
+          .highlight {
+            display: block;
+            font-size: clamp(1em, 2.2vw, 1.2em);
+            font-weight: 800;
+            color: #FFD700;
+            margin-bottom: clamp(0.2rem, 0.5vw, 0.3rem);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            letter-spacing: 1px;
+          }
+
+          .detail {
+            font-size: clamp(0.7em, 1.5vw, 0.8em);
+            color: white;
+            font-weight: 500;
+          }
+
+          @keyframes bounce {
+            0%, 100% {
+              transform: scale(clamp(0.6, 0.7vw, 0.7));
+            }
+            50% {
+              transform: scale(clamp(0.7, 0.8vw, 0.8));
+            }
+          }
+
+          /* Responsive Styles */
+          @media (max-width: 480px) {
+            .action-buttons {
+              flex-direction: column;
+              align-items: flex-start;
+            }
+
+            .action-btn {
+              width: auto;
+            }
+
+            .floating-discount {
+              padding: 0.6rem;
+            }
+
+            .countdown {
+              gap: 0.6rem;
+            }
           }
           </style>
+
+          <script>
+          // Set the date we're counting down to (30 days from now)
+          const countDownDate = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
+
+          // Update the countdown every 1 second
+          const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+              clearInterval(x);
+              document.getElementById("countdown").innerHTML = "EXPIRED";
+            }
+          }, 1000);
+          </script>
           <!--END VIDEO BANNER-->
+          
           <p class="h4 text-primary mb-4" style="font-family: 'Montserrat';">Invitation Card Digital</p>
         </div>
       </div>
@@ -257,7 +558,7 @@ sections.forEach(section => observer.observe(section));
         </div>
         <style>
         .runningtext-weeding {
-        background: linear-gradient(135deg, #009dff, #23f);
+        background: linear-gradient(135deg, cyan, #0D6EFD);
         color: white;
         padding: 0.8rem;
         overflow: hidden;
@@ -582,7 +883,7 @@ fetch('wedding/wedding.json')
         </div>
         <style>
         .runningtext-birthday {
-        background: linear-gradient(135deg, #009dff, #23f);
+        background: linear-gradient(135deg, cyan, #0D6EFD);
         color: white;
         padding: 0.8rem;
         overflow: hidden;
@@ -905,7 +1206,7 @@ fetch('birthday/birthday.json')
         </div>
         <style>
         .runningtext-graduation {
-        background: linear-gradient(135deg, #009dff, #23f);
+        background: linear-gradient(135deg, cyan, #0D6EFD);
         color: white;
         padding: 0.8rem;
         overflow: hidden;
@@ -1525,6 +1826,10 @@ document.addEventListener('click', (e) => {
 <!-- end navbar bottom -->
 </div>
 <!-- end navbar bottom -->
+
+
+
+
 
 
 </body>
