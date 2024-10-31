@@ -1,94 +1,134 @@
 {
-    "packages": [
-      {
-        "title": "Themes 1",
-        "price": "Rp 2.500.000",
-        "image": "graduation/images/themes 1.jpg",
-        "category": "Graduation Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      },
-      {
-        "title": "Themes 2",
-        "price": "Rp 2.500.000",
-        "image": "graduation/images/themes 2.jpg",
-        "category": "Graduation Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      },
-      {
-        "title": "Themes 3",
-        "price": "Rp 2.500.000",
-        "image": "graduation/images/themes 3.jpg",
-        "category": "Graduation Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      },
-      {
-        "title": "Themes 4",
-        "price": "Rp 2.500.000",
-        "image": "graduation/images/themes 4.jpg",
-        "category": "Graduation Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      },
-      {
-        "title": "Themes 5",
-        "price": "Rp 2.500.000",
-        "image": "graduation/images/themes 5.jpg",
-        "category": "Graduation Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      },
-      {
-        "title": "Themes 6",
-        "price": "Rp 2.500.000",
-        "image": "graduation/images/themes 6.jpg",
-        "category": "Graduation Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      },
-      {
-        "title": "Themes 7",
-        "price": "Rp 2.500.000",
-        "image": "graduation/images/themes 7.jpg",
-        "category": "Graduation Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      },
-      {
-        "title": "Themes 8",
-        "price": "Rp 2.500.000",
-        "image": "graduation/images/themes 8.jpg",
-        "category": "Graduation Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      },
-      {
-        "title": "Themes 9",
-        "price": "Rp 2.500.000",
-        "image": "graduation/images/themes 9.jpg",
-        "category": "Graduation Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      },
-      {
-        "title": "Themes 10",
-        "price": "Rp 2.500.000",
-        "image": "graduation/images/themes 10.jpg",
-        "category": "Graduation Invitation",
-        "featured": false,
-        "type": "image",
-        "link": "https://adenanma.github.io/web"
-      }
-    ]
+  "packages": [    
+    
+    {
+      "title": "Ghotic Themes",
+      "judul": "Style 1",
+      "price": "Rp 2.500.000",
+      "discount": 10,
+      "image": "graduation/images/themes 1.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    },
+    {
+      "title": "Ghotic Themes",
+      "judul": "Style 2",
+      "price": "Rp 2.500.000",
+      "discount": 0,
+      "image": "graduation/images/themes 2.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    },
+
+    
+
+
+
+
+
+
+    {
+      "title": "Budaya Themes",
+      "judul": "Style 1",
+      "price": "Rp 2.500.000",
+      "discount": 20,
+      "image": "graduation/images/themes 3.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    },
+    {
+      "title": "Budaya Themes",
+      "judul": "Style 2",
+      "price": "Rp 2.500.000",
+      "discount": 0,
+      "image": "graduation/images/themes 4.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    },
+
+
+
+
+
+
+
+
+    {
+      "title": "Elegant Themes",
+      "judul": "Style 1",
+      "price": "Rp 2.500.000",
+      "discount": 30,
+      "image": "graduation/images/themes 5.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    },
+    {
+      "title": "Elegant Themes",
+      "judul": "Style 2",
+      "price": "Rp 2.500.000",
+      "discount": 0,
+      "image": "graduation/images/themes 6.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    },
+    {
+      "title": "Elegant Themes",
+      "judul": "Style 3",
+      "price": "Rp 2.500.000",
+      "discount": 40,
+      "image": "graduation/images/themes 7.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    },
+
+
+
+
+
+
+    
+    {
+      "title": "Menarik Themes",
+      "judul": "Style 1",
+      "price": "Rp 2.500.000",
+      "discount": 50,
+      "image": "graduation/images/themes 8.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    },
+    {
+      "title": "Menarik Themes",
+      "judul": "Style 2",
+      "price": "Rp 2.500.000",
+      "discount": 0,
+      "image": "graduation/images/themes 9.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    },
+
+
+
+
+
+    
+    {
+      "title": "Keren Themes",
+      "judul": "Style 1", 
+      "price": "Rp 300.000",
+      "discount": 60,
+      "image": "graduation/images/themes 10.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    },
+    {
+      "title": "Keren Themes",
+      "judul": "Style 2", 
+      "price": "Rp 300.000",
+      "discount": 70,
+      "image": "graduation/images/themes 10.jpg",
+      "category": "Graduation Invitation",
+      "link": "https://adenanma.github.io/"
+    }
+  ]
 }
+

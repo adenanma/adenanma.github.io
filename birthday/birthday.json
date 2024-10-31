@@ -1,94 +1,133 @@
 {
-  "packages": [
+  "packages": [    
+    
     {
-      "title": "Themes 1",
+      "title": "Ghotic Themes",
+      "judul": "Style 1",
       "price": "Rp 2.500.000",
+      "discount": 10,
       "image": "birthday/images/themes 1.jpg",
       "category": "Birthday Invitation",
-      "featured": false,
-      "type": "image",
-      "link": "https://adenanma.github.io/web"
+      "link": "https://adenanma.github.io/"
     },
     {
-      "title": "Themes 2",
+      "title": "Ghotic Themes",
+      "judul": "Style 2",
       "price": "Rp 2.500.000",
+      "discount": 0,
       "image": "birthday/images/themes 2.jpg",
       "category": "Birthday Invitation",
-      "featured": false,
-      "type": "image",
-      "link": "https://adenanma.github.io/web"
+      "link": "https://adenanma.github.io/"
     },
+
+    
+
+
+
+
+
+
     {
-      "title": "Themes 3",
+      "title": "Budaya Themes",
+      "judul": "Style 1",
       "price": "Rp 2.500.000",
+      "discount": 20,
       "image": "birthday/images/themes 3.jpg",
       "category": "Birthday Invitation",
-      "featured": false,
-      "type": "image",
-      "link": "https://adenanma.github.io/web"
+      "link": "https://adenanma.github.io/"
     },
     {
-      "title": "Themes 4",
+      "title": "Budaya Themes",
+      "judul": "Style 2",
       "price": "Rp 2.500.000",
+      "discount": 0,
       "image": "birthday/images/themes 4.jpg",
       "category": "Birthday Invitation",
-      "featured": false,
-      "type": "image",
-      "link": "https://adenanma.github.io/web"
+      "link": "https://adenanma.github.io/"
     },
+
+
+
+
+
+
+
+
     {
-      "title": "Themes 5",
+      "title": "Elegant Themes",
+      "judul": "Style 1",
       "price": "Rp 2.500.000",
+      "discount": 30,
       "image": "birthday/images/themes 5.jpg",
       "category": "Birthday Invitation",
-      "featured": false,
-      "type": "image",
-      "link": "https://adenanma.github.io/web"
+      "link": "https://adenanma.github.io/"
     },
     {
-      "title": "Themes 6",
+      "title": "Elegant Themes",
+      "judul": "Style 2",
       "price": "Rp 2.500.000",
+      "discount": 0,
       "image": "birthday/images/themes 6.jpg",
       "category": "Birthday Invitation",
-      "featured": false,
-      "type": "image",
-      "link": "https://adenanma.github.io/web"
+      "link": "https://adenanma.github.io/"
     },
     {
-      "title": "Themes 7",
+      "title": "Elegant Themes",
+      "judul": "Style 3",
       "price": "Rp 2.500.000",
+      "discount": 40,
       "image": "birthday/images/themes 7.jpg",
       "category": "Birthday Invitation",
-      "featured": false,
-      "type": "image",
-      "link": "https://adenanma.github.io/web"
+      "link": "https://adenanma.github.io/"
     },
+
+
+
+
+
+
+    
     {
-      "title": "Themes 8",
+      "title": "Menarik Themes",
+      "judul": "Style 1",
       "price": "Rp 2.500.000",
+      "discount": 50,
       "image": "birthday/images/themes 8.jpg",
       "category": "Birthday Invitation",
-      "featured": false,
-      "type": "image",
-      "link": "https://adenanma.github.io/web"
+      "link": "https://adenanma.github.io/"
     },
     {
-      "title": "Themes 9",
+      "title": "Menarik Themes",
+      "judul": "Style 2",
       "price": "Rp 2.500.000",
+      "discount": 0,
       "image": "birthday/images/themes 9.jpg",
       "category": "Birthday Invitation",
-      "featured": false,
-      "type": "image",
-      "link": "https://adenanma.github.io/web"
+      "link": "https://adenanma.github.io/"
     },
+
+
+
+
+
+    
     {
-      "title": "Themes 10",
-      "price": "Rp 2.500.000",
+      "title": "Keren Themes",
+      "judul": "Style 1", 
+      "price": "Rp 300.000",
+      "discount": 60,
       "image": "birthday/images/themes 10.jpg",
       "category": "Birthday Invitation",
-      "featured": false,
-      "type": "image",
-      "link": "https://adenanma.github.io/web"
+      "link": "https://adenanma.github.io/"
+    },
+    {
+      "title": "Keren Themes",
+      "judul": "Style 2", 
+      "price": "Rp 300.000",
+      "discount": 70,
+      "image": "birthday/images/themes 10.jpg",
+      "category": "Birthday Invitation",
+      "link": "https://adenanma.github.io/"
     }
   ]
 }
