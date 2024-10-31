@@ -29,532 +29,497 @@
           <h1 class="display-4 fw-bold fst-italic mb-3 hero-title" style="font-family: 'Montserrat';">
             kataSemata<span class="text-primary">.</span>
           </h1>
-      
-          
-          <div class="card video-banner mb-4">
-            <video class="card-video" autoplay loop muted playsinline>
-              <source src="ads/bgads1.mp4" type="video/mp4">
-              Browser Anda tidak mendukung tag video.
-            </video>
-            
-           
-            <div class="discount-corner">
-              <div class="discount-badge">
-                <span class="discount-text" id="discountText"></span>
-                <span class="discount-amount" id="discountAmount"></span>
-                <span class="discount-off" id="discountStatus"></span>
+          <p class="h4 text-primary mb-4" style="font-family: 'Montserrat';">Invitation Card Digital</p>
+
+          <!-- Ads -->
+          <div class="video-container mb-4">
+            <div class="video-item">
+              <video autoplay loop muted playsinline>
+                <source src="ads/bgads.mp4" type="video/mp4">
+              </video>
+              <div class="terms-overlay">
+                <div class="terms-content">
+                  <div class="promo-header">
+                    <h4 class="terms-title">✨ SPESIAL BULAN INI! ✨</h4>
+                    <div class="sparkles"></div>
+                  </div>
+                  <div class="discount-badge glow-effect" id="discountBadge"></div>
+                  <div class="price-container">
+                    <span class="original-price" id="originalPrice"></span>
+                    <span class="discounted-price shine-effect" id="discountedPrice"></span>
+                  </div>
+                  <ul class="terms-list floating-items" id="termsList">
+                  </ul>
+                  <div class="action-buttons mt-3">
+                    <a href="https://wa.me/6281234567890" class="btn btn-success btn-sm mb-2 w-100 pulse-button">
+                      <i class="fab fa-whatsapp"></i> Pesan Sekarang
+                    </a>
+                    <button onclick="copyLink()" class="btn btn-light btn-sm w-100 hover-effect">
+                      <i class="fas fa-link"></i> Salin Link
+                    </button>
+                  </div>
+                </div>
               </div>
-            </div>
-
-            
-            <div class="price-display">
-              <span class="original-price" id="originalPrice"></span>
-              <span class="discounted-price" id="discountedPrice"></span>
-              <div class="terms-container" id="termsContainer">
-                <ul class="terms-list"></ul>
-              </div>
-            </div>
-
-         
-            <div class="action-buttons">
-
-              
-              <button onclick="shareContent()" class="action-btn preview-btn">
-                <i class="bi bi-share-fill me-2"></i>
-                <span>Bagikan Promo Spesial Ini!</span>
-              </button>
-              <script>
-                function shareContent() {
-                  const shareTitle = '🎉 Promo Spesial kataSemata!';
-                  const shareText = '✨ Dapatkan diskon spesial untuk undangan digital impianmu! Jangan sampai kelewatan, kunjungi sekarang:';
-                  const shareUrl = window.location.href;
-
-                  if (navigator.share) {
-                    // Use Web Share API if available
-                    navigator.share({
-                      title: shareTitle,
-                      text: shareText,
-                      url: shareUrl
-                    }).catch(console.error);
-                  } else {
-                    // Fallback to custom share menu
-                    const shareOptions = document.createElement('div');
-                    shareOptions.className = 'share-dropdown animate__animated animate__fadeIn';
-                    shareOptions.innerHTML = `
-                      <div class="share-header">Bagikan Melalui:</div>
-                      <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('🎉 ' + shareText + ' ' + shareUrl)}" target="_blank" class="share-item">
-                        <i class="bi bi-whatsapp"></i> WhatsApp
-                      </a>
-                      <a href="#" onclick="copyToClipboard('${shareUrl}'); return false;" class="share-item">
-                        <i class="bi bi-clipboard"></i> Salin Link
-                      </a>
-                    `;
-                    
-                    const existingDropdown = document.querySelector('.share-dropdown');
-                    if (existingDropdown) {
-                      existingDropdown.remove();
-                    } else {
-                      document.querySelector('.preview-btn').after(shareOptions);
-                    }
-                  }
-                }
-
-                function copyToClipboard(text) {
-                  navigator.clipboard.writeText(text)
-                    .then(() => {
-                      showToast('Link berhasil disalin! 📋');
-                    })
-                    .catch(err => {
-                      console.error('Failed to copy:', err);
-                      showToast('Gagal menyalin link');
-                    });
-                }
-
-                function showToast(message) {
-                  const toast = document.createElement('div');
-                  toast.className = 'custom-toast animate__animated animate__fadeIn';
-                  toast.innerHTML = message;
-                  document.body.appendChild(toast);
-                  
-                  setTimeout(() => {
-                    toast.classList.remove('animate__fadeIn');
-                    toast.classList.add('animate__fadeOut');
-                    setTimeout(() => toast.remove(), 500);
-                  }, 2000);
-                }
-
-                // Close dropdown when clicking outside
-                document.addEventListener('click', (e) => {
-                  const dropdown = document.querySelector('.share-dropdown');
-                  const shareBtn = document.querySelector('.preview-btn');
-                  if (dropdown && !dropdown.contains(e.target) && !shareBtn.contains(e.target)) {
-                    dropdown.remove();
-                  }
-                });
-              </script>
-              <style>
-                .share-dropdown {
-                  position: absolute;
-                  background: white;
-                  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-                  border-radius: 12px;
-                  padding: 12px 0;
-                  z-index: 1000;
-                  margin-top: 10px;
-                  min-width: 200px;
-                  width: 90%;
-                  max-width: 300px;
-                  left: 50%;
-                  transform: translateX(-50%);
-                }
-                .share-header {
-                  padding: 8px 16px;
-                  font-weight: bold;
-                  color: #666;
-                  border-bottom: 1px solid #eee;
-                  margin-bottom: 8px;
-                  font-size: clamp(14px, 2vw, 16px);
-                }
-                .share-item {
-                  display: flex;
-                  align-items: center;
-                  gap: 10px;
-                  padding: 10px 16px;
-                  text-decoration: none;
-                  color: #333;
-                  transition: all 0.3s ease;
-                  font-size: clamp(12px, 1.8vw, 14px);
-                }
-                .share-item:hover {
-                  background: #f8f9fa;
-                  color: #0d6efd;
-                  transform: translateX(5px);
-                }
-                .custom-toast {
-                  position: fixed;
-                  bottom: 20px;
-                  left: 50%;
-                  transform: translateX(-50%);
-                  background: rgba(0,0,0,0.8);
-                  color: white;
-                  padding: 12px 24px;
-                  border-radius: 50px;
-                  z-index: 1100;
-                  font-size: clamp(12px, 2vw, 14px);
-                  width: 90%;
-                  max-width: 300px;
-                  text-align: center;
-                }
-                .action-btn.preview-btn {
-                  background: linear-gradient(45deg, #0d6efd, #0dcaf0);
-                  border: none;
-                  padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
-                  border-radius: 50px;
-                  color: white;
-                  font-weight: 500;
-                  transition: all 0.3s ease;
-                  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.2);
-                  font-size: clamp(12px, 2vw, 14px);
-                  width: 100%;
-                  max-width: 300px;
-                  margin: 0 auto;
-                  cursor: pointer;
-                }
-                .action-btn.preview-btn:hover {
-                  transform: translateY(-2px);
-                  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.3);
-                }
-                
-                @media (max-width: 768px) {
-                  .share-dropdown {
-                    position: fixed;
-                    bottom: 0;
-                    left: 0;
-                    right: 0;
-                    width: 100%;
-                    max-width: none;
-                    transform: none;
-                    margin: 0;
-                    border-radius: 12px 12px 0 0;
-                  }
-                  
-                  .action-btn.preview-btn {
-                    width: 90%;
-                  }
-                }
-              </style>
-
-              
-              <a href="https://wa.me/6285172121407?text=Halo%20kataSemata,%0A%0ASaya%20tertarik%20dengan%20tema%20undangan%20digital%20ini%20yang%20sedang%20diskon%20" id="whatsappLink" target="_blank" class="action-btn whatsapp-btn">
-                <i class="bi bi-whatsapp"></i>
-                <span>Pesan Sekarang</span>
-              </a>
             </div>
           </div>
-
-          <script>
-            fetch('ads/ads.json')
-              .then(response => response.json()) 
-              .then(ads => {
-                // Update discount corner
-                document.getElementById('discountText').textContent = ads.discount_text;
-                document.getElementById('discountAmount').textContent = ads.discount_amount;
-                document.getElementById('discountStatus').textContent = ads.discount_status;
-
-                // Update price display
-                document.getElementById('originalPrice').textContent = ads.original_price;
-                
-                // Hitung discounted price
-                const originalPrice = parseInt(ads.original_price.replace(/\D/g,''));
-                const discountPercent = parseInt(ads.discount_amount);
-                const discountedPrice = originalPrice - (originalPrice * discountPercent/100);
-                
-                // Format discounted price
-                const formattedPrice = new Intl.NumberFormat('id-ID', {
-                  style: 'currency',
-                  currency: 'IDR',
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 0
-                }).format(discountedPrice);
-                
-                document.getElementById('discountedPrice').textContent = formattedPrice;
-
-                // Update terms
-                const termsList = document.querySelector('.terms-list');
-                ads.terms.forEach(term => {
-                  const li = document.createElement('li');
-                  li.textContent = term;
-                  termsList.appendChild(li);
-                });
-
-                // Update WhatsApp link
-                const link = document.getElementById('whatsappLink');
-                link.href += `${encodeURIComponent(ads.discount_amount)}%20${encodeURIComponent(ads.discount_status)}.%0A%0AMohon%20info%20lebih%20lanjut%20ya%20kak.`;
-              })
-              .catch(error => console.error('Error loading ads.json:', error));
-          </script>
-
           <style>
-          .video-banner {
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+          .video-container {
             width: 100%;
-            max-width: 900px;
+            max-width: 350px;
             margin: 0 auto;
-            transition: all 0.4s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0.5rem;
+            min-height: 200px;
+            perspective: 1000px;
           }
 
-          .card-video {
+          .video-item {
             width: 100%;
-            height: 500px;
+            height: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease;
+            aspect-ratio: 9/16;
+          }
+
+          .video-item:hover {
+            transform: translateY(-5px) rotateX(3deg);
+          }
+
+          .video-item video {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-            filter: brightness(0.85);
-            transition: all 0.4s ease;
           }
 
-          .video-banner:hover .card-video {
-            filter: brightness(1);
-          }
-
-          /* Price Display Style */
-          .price-display {
+          .terms-overlay {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.8);
-            padding: 20px 30px;
-            border-radius: 15px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: clamp(0.3rem, 2vw, 1rem);
+          }
+
+          .terms-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(0.5rem, 3vw, 1rem);
+            gap: clamp(0.5rem, 2vw, 1rem);
+          }
+
+          .terms-title {
+            color: #fff;
+            font-family: 'Montserrat';
+            font-weight: 800;
             text-align: center;
-            backdrop-filter: blur(8px);
-            min-width: 280px;
+            font-size: clamp(0.8rem, 4vw, 1.2rem);
+            text-shadow: 0 0 6px rgba(255,255,255,0.5);
+            letter-spacing: 1px;
+            margin: 0;
+          }
+
+          .discount-badge {
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            color: white;
+            padding: clamp(0.2rem, 1.5vw, 0.6rem) clamp(0.4rem, 2vw, 0.8rem);
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: clamp(0.7rem, 3vw, 0.9rem);
+            text-align: center;
+            width: fit-content;
+            margin: 0 auto;
+          }
+
+          .price-container {
+            text-align: center;
+            color: white;
+            font-family: 'Montserrat';
+            padding: clamp(0.3rem, 2vw, 0.8rem);
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
           }
 
           .original-price {
-            display: block;
-            color: #ff4b4b;
             text-decoration: line-through;
-            font-size: 1.2rem;
-            margin-bottom: 5px;
+            color: #ff6b6b;
+            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+            margin-right: 0.5rem;
           }
 
           .discounted-price {
-            display: block;
-            color: #fff;
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-          }
-
-          .terms-container {
-            border-top: 1px solid rgba(255,255,255,0.2);
-            padding-top: 10px;
-            margin-top: 10px;
+            font-weight: 800;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            color: #2ecc71;
           }
 
           .terms-list {
             list-style: none;
             padding: 0;
             margin: 0;
+            color: white;
+            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
             text-align: left;
-            font-size: 0.8rem;
-            color: #fff;
+            overflow-y: auto;
+            max-height: 30vh;
           }
 
           .terms-list li {
-            margin-bottom: 5px;
-            padding-left: 20px;
-            position: relative;
-          }
-
-          .terms-list li:before {
-            content: "•";
-            position: absolute;
-            left: 5px;
-            color: #0D6EFD;
-          }
-
-          /* Action Buttons Style */
-          .action-buttons {
-            position: absolute;
-            bottom: 15px;
-            left: 0;
-            right: 0;
-            display: flex;
-            gap: 10px;
-            z-index: 20;
-            justify-content: center;
-            padding: 0 15px;
-          }
-
-          .action-btn {
+            margin-bottom: clamp(0.2rem, 1vw, 0.4rem);
+            font-family: 'Montserrat';
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            white-space: nowrap;
-            justify-content: center;
-            width: 180px;
+            gap: 0.4rem;
+            padding: clamp(0.2rem, 1.5vw, 0.4rem);
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
           }
 
-          .preview-btn {
-            background: linear-gradient(135deg, #0D6EFD, cyan);
-            color: white;
+          .terms-list i {
+            color: #2ecc71;
+            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            flex-shrink: 0;
           }
 
-          .whatsapp-btn {
-            background: linear-gradient(135deg, cyan, #0D6EFD);
-            color: white;
-          }
-
-          .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-          }
-
-          /* Corner Discount Style */
-          .discount-corner {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            z-index: 20;
-            animation: bounce 2s infinite;
-            transform: scale(0.7);
-          }
-
-          .discount-badge {
-            background: linear-gradient(135deg, #FF416C, #FF4B2B);
-            color: white;
-            padding: 8px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+          .action-buttons {
+            margin-top: auto;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 0.5rem;
           }
 
-          .discount-text {
-            font-size: 0.6em;
-            font-weight: 700;
-            letter-spacing: 1px;
-          }
-
-          .discount-amount {
-            font-size: 1.3em;
-            font-weight: 800;
-            line-height: 1;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-          }
-
-          .discount-off {
-            font-size: 0.7em;
+          .action-buttons .btn {
+            font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+            padding: clamp(0.3rem, 1.5vw, 0.6rem);
+            border-radius: 8px;
+            font-family: 'Montserrat';
             font-weight: 600;
           }
 
-          @keyframes bounce {
-            0%, 100% {
-              transform: scale(0.7);
+          /* Extra small devices (phones, 320px and down) */
+          @media only screen and (max-width: 320px) {
+            .video-container {
+              max-width: 280px;
+              min-height: 180px;
             }
-            50% {
-              transform: scale(0.8);
-            }
-          }
-
-          /* Responsive Styles */
-          @media (max-width: 1200px) {
-            .card-video {
-              height: 450px;
-            }
-            
-            .action-btn {
-              width: 160px;
-              font-size: 0.85rem;
-            }
-          }
-
-          @media (max-width: 992px) {
-            .card-video {
-              height: 400px;
-            }
-            
-            .action-btn {
-              width: 150px;
-              padding: 8px 16px;
-            }
-            
-            .discount-corner {
-              transform: scale(0.6);
-            }
-          }
-
-          @media (max-width: 768px) {
-            .card-video {
-              height: 450px;
-            }
-            
-            .action-buttons {
-              padding: 0 10px;
-              gap: 8px;
-            }
-            
-            .action-btn {
-              width: 140px;
+            .terms-title {
               font-size: 0.8rem;
-              padding: 8px 12px;
             }
-
-            .price-display {
-              padding: 15px;
-              min-width: 240px;
-            }
-
-            .original-price {
-              font-size: 1rem;
-            }
-
-            .discounted-price {
-              font-size: 1.4rem;
-            }
-
             .terms-list {
+              font-size: 0.6rem;
+            }
+            .action-buttons .btn {
               font-size: 0.7rem;
             }
           }
 
-          @media (max-width: 480px) {
-            .action-buttons {
-              flex-direction: column;
-              align-items: stretch;
-              padding: 0 15px;
-              gap: 8px;
-              bottom: 10px;
+          /* Small devices (portrait phones, 321px to 375px) */
+          @media only screen and (min-width: 321px) and (max-width: 375px) {
+            .video-container {
+              max-width: 320px;
+              min-height: 190px;
             }
-
-            .action-btn {
-              width: 100%;
-              font-size: 0.75rem;
-              padding: 6px 10px;
-            }
-
-            .card-video {
-              height: 500px;
-            }
-            
-            .discount-corner {
-              transform: scale(0.5);
-              top: -10px;
-              right: -10px;
-            }
-
-            .price-display {
-              padding: 10px;
-              min-width: 200px;
-            }
-
-            .original-price {
+            .terms-title {
               font-size: 0.9rem;
             }
-
-            .discounted-price {
-              font-size: 1.2rem;
-            }
-
             .terms-list {
               font-size: 0.65rem;
             }
+            .action-buttons .btn {
+              font-size: 0.75rem;
+            }
+          }
+
+          /* Medium devices (landscape phones, 376px to 425px) */
+          @media only screen and (min-width: 376px) and (max-width: 425px) {
+            .video-container {
+              max-width: 350px;
+              min-height: 200px;
+            }
+            .terms-title {
+              font-size: 1rem;
+            }
+            .terms-list {
+              font-size: 0.7rem;
+            }
+            .action-buttons .btn {
+              font-size: 0.8rem;
+            }
+          }
+
+          /* Large devices (tablets, 426px to 768px) */
+          @media only screen and (min-width: 426px) and (max-width: 768px) {
+            .video-container {
+              max-width: 400px;
+              min-height: 250px;
+            }
+            .terms-title {
+              font-size: 1.1rem;
+            }
+            .terms-list {
+              font-size: 0.75rem;
+            }
+            .action-buttons .btn {
+              font-size: 0.85rem;
+            }
+          }
+
+          /* Extra large devices (desktops, 769px and up) */
+          @media only screen and (min-width: 769px) {
+            .video-container {
+              max-width: 450px;
+              min-height: 300px;
+            }
+            .terms-title {
+              font-size: 1.2rem;
+            }
+            .terms-list {
+              font-size: 0.8rem;
+            }
+            .action-buttons .btn {
+              font-size: 0.9rem;
+            }
+          }
+
+          /* For retina and high DPI displays */
+          @media only screen and (-webkit-min-device-pixel-ratio: 2),
+                 only screen and (min--moz-device-pixel-ratio: 2),
+                 only screen and (-o-min-device-pixel-ratio: 2/1),
+                 only screen and (min-device-pixel-ratio: 2) {
+            .video-item {
+              box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+            }
+          }
+
+          /* For dark mode */
+          @media (prefers-color-scheme: dark) {
+            .terms-overlay {
+              background: rgba(0,0,0,0.8);
+            }
+            .terms-list li {
+              background: rgba(255,255,255,0.15);
+            }
+          }
+
+          /* For reduced motion preferences */
+          @media (prefers-reduced-motion: reduce) {
+            .video-item {
+              transition: none;
+            }
+            .video-item:hover {
+              transform: none;
+            }
           }
           </style>
-      
-          
-          <p class="h4 text-primary mb-4" style="font-family: 'Montserrat';">Invitation Card Digital</p>
+          <script>
+          // Fetch ads data from JSON file
+          async function loadAdsData() {
+            try {
+              const response = await fetch('ads/ads.json');
+              if (!response.ok) throw new Error('Gagal mengambil data iklan');
+              
+              const data = await response.json();
+              const ads = data.adsContainer;
+              
+              // Update UI elements with animation
+              await animateUpdate(() => updateDiscountBadge(ads.discount));
+              await animateUpdate(() => updatePricing(ads.price, ads.discount));
+              await animateUpdate(() => updateTermsList(ads.terms));
+              validatePromoDate(ads.period);
+              
+              // Setup WhatsApp link dengan data dari ads.json
+              setupWhatsAppLink(ads);
+              
+            } catch (error) {
+              console.error('Error:', error);
+              showErrorMessage('Terjadi kesalahan saat memuat data');
+            }
+          }
+
+          function setupWhatsAppLink(ads) {
+            const waButton = document.querySelector('a[href*="wa.me"]');
+            if (!waButton) return;
+
+            const originalPrice = ads.price.original;
+            const discountPercent = parseInt(ads.discount.amount);
+            const originalAmount = parseInt(originalPrice.replace(/\D/g,''));
+            const discountedPrice = calculateDiscountedPrice(originalAmount, discountPercent);
+            
+            const message = encodeURIComponent(
+              `Halo kataSemata, saya tertarik dengan promo undangan digital yang ada di website ini:\n\n` +
+              `💫 *PROMO SPESIAL!*\n` +
+              `Diskon: ${ads.discount.amount}\n` +
+              `Harga Normal: ${originalPrice}\n` +
+              `Harga Promo: ${formatCurrency(discountedPrice)}` 
+            );
+
+            waButton.href = `https://wa.me/6285172121407?text=${message}`;
+          }
+
+          function animateUpdate(updateFn) {
+            return new Promise(resolve => {
+              setTimeout(() => {
+                updateFn();
+                resolve();
+              }, 300);
+            });
+          }
+
+          function updateDiscountBadge(discount) {
+            const badge = document.getElementById('discountBadge');
+            if (!badge) return;
+            
+            const formattedText = `${discount.text} ${discount.amount} ${discount.status}`;
+            badge.textContent = formattedText;
+            badge.classList.add('discount-animation');
+          }
+
+          function updatePricing(price, discount) {
+            const originalPriceEl = document.getElementById('originalPrice');
+            const discountedPriceEl = document.getElementById('discountedPrice');
+            
+            if (!originalPriceEl || !discountedPriceEl) return;
+
+            originalPriceEl.textContent = price.original;
+            
+            const originalAmount = parseInt(price.original.replace(/\D/g,''));
+            if (isNaN(originalAmount)) {
+              throw new Error('Format harga tidak valid');
+            }
+            
+            const discountPercent = parseInt(discount.amount);
+            const discountedPrice = calculateDiscountedPrice(originalAmount, discountPercent);
+            
+            // Animate price update
+            animateNumber(discountedPriceEl, discountedPrice);
+          }
+
+          function animateNumber(element, finalValue) {
+            const duration = 1000;
+            const steps = 20;
+            const stepValue = finalValue / steps;
+            let currentStep = 0;
+
+            const interval = setInterval(() => {
+              currentStep++;
+              const currentValue = Math.min(stepValue * currentStep, finalValue);
+              element.textContent = formatCurrency(currentValue);
+
+              if (currentStep >= steps) {
+                clearInterval(interval);
+              }
+            }, duration / steps);
+          }
+
+          function calculateDiscountedPrice(price, discountPercent) {
+            const multiplier = (100 - discountPercent) / 100;
+            return Math.round(price * multiplier);
+          }
+
+          function formatCurrency(amount) {
+            return `Rp ${Math.round(amount).toLocaleString('id-ID')}`;
+          }
+
+          function updateTermsList(terms) {
+            const termsList = document.getElementById('termsList');
+            if (!termsList) return;
+            
+            termsList.innerHTML = '';
+            
+            terms.forEach((term, index) => {
+              setTimeout(() => {
+                const li = document.createElement('li');
+                li.classList.add('term-item', `term-${index + 1}`);
+                li.innerHTML = `
+                  <i class="fas fa-check-circle"></i>
+                  <span class="term-text">${term}</span>
+                `;
+                li.style.opacity = '0';
+                li.style.transform = 'translateX(-20px)';
+                termsList.appendChild(li);
+
+                requestAnimationFrame(() => {
+                  li.style.opacity = '1';
+                  li.style.transform = 'translateX(0)';
+                  li.style.transition = 'all 0.5s ease';
+                });
+              }, index * 200);
+            });
+          }
+
+          function validatePromoDate(period) {
+            const today = new Date();
+            const startDate = new Date(period.startDate);
+            const endDate = new Date(period.endDate);
+            
+            if (today < startDate || today > endDate) {
+              showPromoExpiredMessage();
+            }
+          }
+
+          function showErrorMessage(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.classList.add('alert', 'alert-danger', 'fade-in');
+            errorDiv.textContent = message;
+            document.body.prepend(errorDiv);
+            
+            setTimeout(() => {
+              errorDiv.classList.add('fade-out');
+              setTimeout(() => errorDiv.remove(), 500);
+            }, 4500);
+          }
+
+          function showPromoExpiredMessage() {
+            const promoElements = document.querySelectorAll('.promo-content');
+            promoElements.forEach(el => {
+              el.classList.add('expired');
+              el.innerHTML = '<span class="expired-text">Promo telah berakhir</span>';
+            });
+          }
+
+          async function copyLink() {
+            try {
+              await navigator.clipboard.writeText(window.location.href);
+              showToast('✨ Link berhasil disalin! ✨');
+            } catch (err) {
+              showToast('❌ Gagal menyalin link', 'error');
+            }
+          }
+
+          function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.classList.add('toast', `toast-${type}`, 'fade-in');
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+              toast.classList.add('fade-out');
+              setTimeout(() => toast.remove(), 500);
+            }, 2500);
+          }
+
+          document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.video-container').classList.add('fade-in');
+            loadAdsData();
+          });
+          </script>
+          <!-- End Ads -->
+
         </div>
       </div>
     </div>

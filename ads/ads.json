@@ -1,15 +1,31 @@
 {
-  "discount_text": "PROMO",
-  "discount_amount": "70%", 
-  "discount_status": "OFF",
-  "original_price": "Rp 421.999",
-  "start_date": "2024-01-01",
-  "end_date": "2024-12-31",
-  "terms": [
-    "Promo berlaku untuk pembelian pertama kali",
-    "Bebas pilih semua tema apa saja dan pilih 1 yang kalian suka",
-    "Harga sudah termasuk revisi 2x",
-    "Tidak dapat digabung dengan promo lain",
-    "Tidak dapat diperpanjang, hanya berlaku untuk 1 bulan"
-  ]
+  "adsContainer": {
+    "discount": {
+      "text": "PROMO",
+      "amount": "75%",
+      "status": "ON"
+    },
+    "price": {
+      "original": "Rp 421.999"
+    },
+    "period": {
+      "startDate": "2024-01-01", 
+      "endDate": "2024-12-31"
+    },
+    "terms": [
+      "Promo berlaku untuk semua jenis undangan digital",
+      "Gratis konsultasi desain dan pemilihan tema",
+      "Termasuk 3x revisi konten dan desain", 
+      "Pengerjaan maksimal 3 hari kerja",
+      "Gratis penyesuaian warna dan font sesuai keinginan",
+      "Termasuk fitur musik dan galeri foto",
+      "Gratis animasi dan efek visual menarik",
+      "Dukungan teknis 24/7 via WhatsApp",
+      "Termasuk fitur peta lokasi acara",
+      "Gratis fitur RSVP dan ucapan digital",
+      "Dapat diakses di semua perangkat",
+      "Hosting gratis selama 1 tahun",
+      "Berlaku untuk pemesanan di bulan ini"
+    ]
+  }
 }
