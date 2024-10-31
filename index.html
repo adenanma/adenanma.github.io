@@ -29,35 +29,250 @@
           <h1 class="display-4 fw-bold fst-italic mb-3 hero-title" style="font-family: 'Montserrat';">
             kataSemata<span class="text-primary">.</span>
           </h1>
+      
           
-          <!-- Video Banner Card -->
           <div class="card video-banner mb-4">
             <video class="card-video" autoplay loop muted playsinline>
-              <source src="ads/adsnewtheme.mp4" type="video/mp4">
+              <source src="ads/bgads1.mp4" type="video/mp4">
               Browser Anda tidak mendukung tag video.
             </video>
             
-            <!-- Discount Corner Banner -->
+           
             <div class="discount-corner">
               <div class="discount-badge">
-                <span class="discount-text">DISKON</span>
-                <span class="discount-amount">50%</span>
-                <span class="discount-off">OFF</span>
+                <span class="discount-text" id="discountText"></span>
+                <span class="discount-amount" id="discountAmount"></span>
+                <span class="discount-off" id="discountStatus"></span>
               </div>
             </div>
 
-            <!-- Action Buttons Container -->
+            
+            <div class="price-display">
+              <span class="original-price" id="originalPrice"></span>
+              <span class="discounted-price" id="discountedPrice"></span>
+              <div class="terms-container" id="termsContainer">
+                <ul class="terms-list"></ul>
+              </div>
+            </div>
+
+         
             <div class="action-buttons">
-              <a href="#" class="action-btn preview-btn">
-                <i class="bi bi-eye-fill"></i>
-                <span>Lihat Preview</span>
-              </a>
-              <a href="https://wa.me/+6281234567890?text=Halo,%20saya%20tertarik%20dengan%20tema%20undangan%20digital%20ini" target="_blank" class="action-btn whatsapp-btn">
+
+              
+              <button onclick="shareContent()" class="action-btn preview-btn">
+                <i class="bi bi-share-fill me-2"></i>
+                <span>Bagikan Promo Spesial Ini!</span>
+              </button>
+              <script>
+                function shareContent() {
+                  const shareTitle = '🎉 Promo Spesial kataSemata!';
+                  const shareText = '✨ Dapatkan diskon spesial untuk undangan digital impianmu! Jangan sampai kelewatan, kunjungi sekarang:';
+                  const shareUrl = window.location.href;
+
+                  if (navigator.share) {
+                    // Use Web Share API if available
+                    navigator.share({
+                      title: shareTitle,
+                      text: shareText,
+                      url: shareUrl
+                    }).catch(console.error);
+                  } else {
+                    // Fallback to custom share menu
+                    const shareOptions = document.createElement('div');
+                    shareOptions.className = 'share-dropdown animate__animated animate__fadeIn';
+                    shareOptions.innerHTML = `
+                      <div class="share-header">Bagikan Melalui:</div>
+                      <a href="https://api.whatsapp.com/send?text=${encodeURIComponent('🎉 ' + shareText + ' ' + shareUrl)}" target="_blank" class="share-item">
+                        <i class="bi bi-whatsapp"></i> WhatsApp
+                      </a>
+                      <a href="#" onclick="copyToClipboard('${shareUrl}'); return false;" class="share-item">
+                        <i class="bi bi-clipboard"></i> Salin Link
+                      </a>
+                    `;
+                    
+                    const existingDropdown = document.querySelector('.share-dropdown');
+                    if (existingDropdown) {
+                      existingDropdown.remove();
+                    } else {
+                      document.querySelector('.preview-btn').after(shareOptions);
+                    }
+                  }
+                }
+
+                function copyToClipboard(text) {
+                  navigator.clipboard.writeText(text)
+                    .then(() => {
+                      showToast('Link berhasil disalin! 📋');
+                    })
+                    .catch(err => {
+                      console.error('Failed to copy:', err);
+                      showToast('Gagal menyalin link');
+                    });
+                }
+
+                function showToast(message) {
+                  const toast = document.createElement('div');
+                  toast.className = 'custom-toast animate__animated animate__fadeIn';
+                  toast.innerHTML = message;
+                  document.body.appendChild(toast);
+                  
+                  setTimeout(() => {
+                    toast.classList.remove('animate__fadeIn');
+                    toast.classList.add('animate__fadeOut');
+                    setTimeout(() => toast.remove(), 500);
+                  }, 2000);
+                }
+
+                // Close dropdown when clicking outside
+                document.addEventListener('click', (e) => {
+                  const dropdown = document.querySelector('.share-dropdown');
+                  const shareBtn = document.querySelector('.preview-btn');
+                  if (dropdown && !dropdown.contains(e.target) && !shareBtn.contains(e.target)) {
+                    dropdown.remove();
+                  }
+                });
+              </script>
+              <style>
+                .share-dropdown {
+                  position: absolute;
+                  background: white;
+                  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+                  border-radius: 12px;
+                  padding: 12px 0;
+                  z-index: 1000;
+                  margin-top: 10px;
+                  min-width: 200px;
+                  width: 90%;
+                  max-width: 300px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                }
+                .share-header {
+                  padding: 8px 16px;
+                  font-weight: bold;
+                  color: #666;
+                  border-bottom: 1px solid #eee;
+                  margin-bottom: 8px;
+                  font-size: clamp(14px, 2vw, 16px);
+                }
+                .share-item {
+                  display: flex;
+                  align-items: center;
+                  gap: 10px;
+                  padding: 10px 16px;
+                  text-decoration: none;
+                  color: #333;
+                  transition: all 0.3s ease;
+                  font-size: clamp(12px, 1.8vw, 14px);
+                }
+                .share-item:hover {
+                  background: #f8f9fa;
+                  color: #0d6efd;
+                  transform: translateX(5px);
+                }
+                .custom-toast {
+                  position: fixed;
+                  bottom: 20px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  background: rgba(0,0,0,0.8);
+                  color: white;
+                  padding: 12px 24px;
+                  border-radius: 50px;
+                  z-index: 1100;
+                  font-size: clamp(12px, 2vw, 14px);
+                  width: 90%;
+                  max-width: 300px;
+                  text-align: center;
+                }
+                .action-btn.preview-btn {
+                  background: linear-gradient(45deg, #0d6efd, #0dcaf0);
+                  border: none;
+                  padding: clamp(8px, 2vw, 12px) clamp(16px, 3vw, 24px);
+                  border-radius: 50px;
+                  color: white;
+                  font-weight: 500;
+                  transition: all 0.3s ease;
+                  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.2);
+                  font-size: clamp(12px, 2vw, 14px);
+                  width: 100%;
+                  max-width: 300px;
+                  margin: 0 auto;
+                  cursor: pointer;
+                }
+                .action-btn.preview-btn:hover {
+                  transform: translateY(-2px);
+                  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.3);
+                }
+                
+                @media (max-width: 768px) {
+                  .share-dropdown {
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    width: 100%;
+                    max-width: none;
+                    transform: none;
+                    margin: 0;
+                    border-radius: 12px 12px 0 0;
+                  }
+                  
+                  .action-btn.preview-btn {
+                    width: 90%;
+                  }
+                }
+              </style>
+
+              
+              <a href="https://wa.me/6285172121407?text=Halo%20kataSemata,%0A%0ASaya%20tertarik%20dengan%20tema%20undangan%20digital%20ini%20yang%20sedang%20diskon%20" id="whatsappLink" target="_blank" class="action-btn whatsapp-btn">
                 <i class="bi bi-whatsapp"></i>
                 <span>Pesan Sekarang</span>
               </a>
             </div>
           </div>
+
+          <script>
+            fetch('ads/ads.json')
+              .then(response => response.json()) 
+              .then(ads => {
+                // Update discount corner
+                document.getElementById('discountText').textContent = ads.discount_text;
+                document.getElementById('discountAmount').textContent = ads.discount_amount;
+                document.getElementById('discountStatus').textContent = ads.discount_status;
+
+                // Update price display
+                document.getElementById('originalPrice').textContent = ads.original_price;
+                
+                // Hitung discounted price
+                const originalPrice = parseInt(ads.original_price.replace(/\D/g,''));
+                const discountPercent = parseInt(ads.discount_amount);
+                const discountedPrice = originalPrice - (originalPrice * discountPercent/100);
+                
+                // Format discounted price
+                const formattedPrice = new Intl.NumberFormat('id-ID', {
+                  style: 'currency',
+                  currency: 'IDR',
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 0
+                }).format(discountedPrice);
+                
+                document.getElementById('discountedPrice').textContent = formattedPrice;
+
+                // Update terms
+                const termsList = document.querySelector('.terms-list');
+                ads.terms.forEach(term => {
+                  const li = document.createElement('li');
+                  li.textContent = term;
+                  termsList.appendChild(li);
+                });
+
+                // Update WhatsApp link
+                const link = document.getElementById('whatsappLink');
+                link.href += `${encodeURIComponent(ads.discount_amount)}%20${encodeURIComponent(ads.discount_status)}.%0A%0AMohon%20info%20lebih%20lanjut%20ya%20kak.`;
+              })
+              .catch(error => console.error('Error loading ads.json:', error));
+          </script>
 
           <style>
           .video-banner {
@@ -81,6 +296,64 @@
 
           .video-banner:hover .card-video {
             filter: brightness(1);
+          }
+
+          /* Price Display Style */
+          .price-display {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            min-width: 280px;
+          }
+
+          .original-price {
+            display: block;
+            color: #ff4b4b;
+            text-decoration: line-through;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+          }
+
+          .discounted-price {
+            display: block;
+            color: #fff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+          }
+
+          .terms-container {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 10px;
+            margin-top: 10px;
+          }
+
+          .terms-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+            font-size: 0.8rem;
+            color: #fff;
+          }
+
+          .terms-list li {
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+          }
+
+          .terms-list li:before {
+            content: "•";
+            position: absolute;
+            left: 5px;
+            color: #0D6EFD;
           }
 
           /* Action Buttons Style */
@@ -204,7 +477,7 @@
 
           @media (max-width: 768px) {
             .card-video {
-              height: 400px;
+              height: 450px;
             }
             
             .action-buttons {
@@ -216,6 +489,23 @@
               width: 140px;
               font-size: 0.8rem;
               padding: 8px 12px;
+            }
+
+            .price-display {
+              padding: 15px;
+              min-width: 240px;
+            }
+
+            .original-price {
+              font-size: 1rem;
+            }
+
+            .discounted-price {
+              font-size: 1.4rem;
+            }
+
+            .terms-list {
+              font-size: 0.7rem;
             }
           }
 
@@ -235,7 +525,7 @@
             }
 
             .card-video {
-              height: 400px;
+              height: 500px;
             }
             
             .discount-corner {
@@ -243,9 +533,26 @@
               top: -10px;
               right: -10px;
             }
+
+            .price-display {
+              padding: 10px;
+              min-width: 200px;
+            }
+
+            .original-price {
+              font-size: 0.9rem;
+            }
+
+            .discounted-price {
+              font-size: 1.2rem;
+            }
+
+            .terms-list {
+              font-size: 0.65rem;
+            }
           }
           </style>
-          <!--END VIDEO BANNER-->
+      
           
           <p class="h4 text-primary mb-4" style="font-family: 'Montserrat';">Invitation Card Digital</p>
         </div>
@@ -462,7 +769,7 @@ sections.forEach(section => observer.observe(section));
           <i class="bi bi-eye"></i> <span id="toggleText2">Tampilkan</span>
         </button>
         <div id="filterButtons2" class="filter-buttons" style="display: none;">
-          <button class="btn btn-outline-primary me-2 filter-btn active" data-filter="all">Semua</button>
+          <button class="btn btn-outline-primary me-2 filter-btn active" style="display: none;" data-filter="all">Semua</button>
         </div>
       </div>
 
@@ -678,14 +985,28 @@ fetch('wedding/wedding.json')
       card.setAttribute('data-category', pkg.title);
       
       const cardContent = `
-        <div class="card h-100 ${pkg.featured ? 'shadow' : 'shadow-sm'}" ${pkg.featured ? 'style="transform: scale(1.03);"' : ''}>
-          <img src="${pkg.image}" class="card-img-top" alt="${pkg.title}">
-          <div class="card-body text-center">
-            <h5 class="card-title">${pkg.title}</h5>
-            <p class="card-text">${pkg.price}</p>
-            <div class="d-grid gap-2">
-              <a href="${pkg.link}" target="_blank" class="btn btn-outline-primary">Preview</a>
-              <a href="https://wa.me/6285172121407?text=Halo%20kataSemata.%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.title)}%20dengan%20kategori%20${encodeURIComponent(pkg.category)}%20dengan%20link%20preview%20${encodeURIComponent(pkg.link)}%20dengan%20harga%20${encodeURIComponent(pkg.price)}" target="_blank" class="btn btn-primary">Pesan via WhatsApp</a>
+        <div class="card h-100 shadow-sm position-relative">
+          ${pkg.discount ? `
+          <div class="position-absolute top-0 end-0 bg-danger text-white px-2 py-1 rounded-start" style="z-index: 1;">
+            ${pkg.discount}% OFF
+          </div>
+          ` : ''}
+          <img src="${pkg.image}" class="card-img-top" alt="${pkg.title}" style="object-fit: cover; height: 200px;">
+          <div class="card-body text-center d-flex flex-column justify-content-between">
+            <div>
+              <h5 class="card-title" style="font-family: 'Montserrat'; font-weight: bold; font-size: clamp(0.8rem, 2vw, 1.2rem);">${pkg.judul}</h5>
+              <p class="card-text">
+                ${pkg.discount ? `
+                <span class="text-decoration-line-through text-muted me-2" style="font-size: clamp(0.7rem, 1.5vw, 1rem);">${pkg.price}</span>
+                <span class="text-danger fw-bold" style="font-size: clamp(0.7rem, 1.5vw, 1rem);">Rp ${(parseInt(pkg.price.replace(/\D/g,'')) * (1 - pkg.discount/100)).toLocaleString()}</span>
+                ` : `
+                <span class="fw-bold" style="font-size: clamp(0.7rem, 1.5vw, 1rem);">${pkg.price}</span>
+                `}
+              </p>
+            </div>
+            <div class="d-grid gap-2 mt-auto">
+              <a href="${pkg.link}" target="_blank" class="btn btn-outline-primary btn-sm">Preview</a>
+              <a href="https://wa.me/6285172121407?text=Halo%20kataSemata,%0A%0ASaya%20tertarik%20dengan:%0A${encodeURIComponent(pkg.title)}.%0A%0ADengan%20style:%0A${encodeURIComponent(pkg.judul)}.%0A%0ADan%20kategori:%0A${encodeURIComponent(pkg.category)}.%0A%0ALink%20Preview:%0A${encodeURIComponent(pkg.link)}.%0A%0AHarga:%0A${pkg.discount ? `${encodeURIComponent(pkg.price)}%20(setelah%20diskon%20harga%20menjadi%20Rp%20${(parseInt(pkg.price.replace(/\D/g,'')) * (1 - pkg.discount/100)).toLocaleString()})` : encodeURIComponent(pkg.price)}" target="_blank" class="btn btn-primary btn-sm"><strong>Pesan via WhatsApp</strong></a>
             </div>
           </div>
         </div>
@@ -724,645 +1045,6 @@ fetch('wedding/wedding.json')
 <!-- end section 2 -->
 
 
-<!-- Section 3 -->
-<div class="container-fluid p-0">
-  <section id="section3" class="min-vh-100 d-flex align-items-center section3 pb-4 mb-4 mt-5 pt-5" style="background-color: #F8F9FA; margin-bottom: 80px;">
-    <div class="container py-4">
-      <h1 class="display-4 fw-bold fst-italic mb-3 section3-title" style="font-family: 'Montserrat';">
-        Birthday<br>Invitation</h1>
-        
-        <!--SCROLLING BANNER-->
-        <div class="runningtext-birthday mb-4">
-          <div class="runningtext-birthday-content">
-            <!--<span>🎉 Promo Spesial Bulan Ini! Dapatkan Diskon 25% untuk Undangan Digital Premium ✨ Buat Momen Spesialmu Lebih Berkesan dengan Desain Eksklusif 💝 Promo Terbatas! 🎊
-            </span>-->
-            <span>🎉 Belum Ada Promo untuk Bulan Ini untuk Birthday Invitation! Tetap Pantau Terus Halaman Ini dan tanya-tanya ke admin untuk Mendapatkan Info Terbaru ✨ Buat Momen Spesialmu Lebih Berkesan dengan Desain Eksklusif 💝 Stay Tuned! 🎊
-            </span>
-          </div>
-        </div>
-        <style>
-        .runningtext-birthday {
-        background: linear-gradient(135deg, cyan, #0D6EFD);
-        color: white;
-        padding: 0.8rem;
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        border-radius: 8px;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .runningtext-birthday-content {
-        display: flex;
-        white-space: nowrap;
-        gap: 1rem;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .runningtext-birthday-content span {
-        padding: 0 2rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-          /* Starting position */
-        transform:translateX(0%);
-        /* Apply animation to this element */
-        animation: scrollText 40s linear infinite;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        @keyframes scrollText {
-        0%   {
-        transform: translateX(20%); 		
-        }
-        100% {
-        transform: translateX(-100%); 
-        }
-        }
-        </style>
-        <!--END SCROLLING BANNER-->
-
-      <div class="text-center mb-3">
-        <button class="btn btn-outline-primary me-2" onclick="toggleFilters3()">
-          <i class="bi bi-funnel"></i> Filter
-        </button>
-        <button class="btn btn-outline-primary me-2" onclick="toggleCards3()">
-          <i class="bi bi-eye"></i> <span id="toggleText3">Tampilkan</span>
-        </button>
-        <div id="filterButtons3" class="filter-buttons" style="display: none;">
-          <button class="btn btn-outline-primary me-2 filter-btn active" data-filter="all">Semua</button>
-        </div>
-      </div>
-
-      <div class="row g-3" id="package-cards3" style="display: none;">
-      </div>
-    </div>
-  </section>
-</div>
-
-<style>
-  .section3-title {
-  overflow: hidden;
-  border-right: 0.15em solid #000;
-  white-space: nowrap;
-  animation: typing 5.5s cubic-bezier(0.4, 0, 0.2, 0.6) infinite,
-             blink-caret 0.75s ease-in-out infinite;
-  width: fit-content;
-  margin: 0 auto;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.card {
-  border: none;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 12px;
-  overflow: hidden;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-}
-
-.card-img-top {
-  height: 250px;
-  object-fit: cover;
-  filter: brightness(0.9);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card:hover .card-img-top {
-  filter: brightness(1);
-}
-
-.ribbon {
-  position: absolute;
-  top: 15px;
-  right: -25px;
-  transform: rotate(45deg);
-  background: #23f;
-  color: white;
-  padding: 4px 35px;
-  font-size: 0.85rem;
-  font-weight: bold;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-primary {
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-weight: 600;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 0.9rem;
-}
-
-.btn-primary:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.filter-buttons {
-  margin-top: 1rem;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.filter-btn {
-  margin-bottom: 0.75rem;
-  border-radius: 15px;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 0.9rem;
-}
-
-.filter-btn.active {
-  background-color: #0d6efd;
-  color: white;
-}
-
-.package-card {
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.package-card.hide {
-  display: none;
-}
-
-.card-body {
-  background: rgba(255,255,255,0.9);
-  padding: 1rem;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card-title {
-  color: #333;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.card-text {
-  color: #0d6efd;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-@media (max-width: 1200px) {
-  .card-body {
-    padding: 0.9rem;
-  }
-  
-  .card-title {
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .card-body {
-    padding: 0.8rem;
-  }
-  
-  .card-title {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .card-body {
-    padding: 0.7rem;
-  }
-  
-  .card-title {
-    font-size: 0.85rem;
-  }
-  
-  .btn-primary {
-    padding: 6px 15px;
-    font-size: 0.85rem;
-  }
-  
-  .list-unstyled li {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .card-body {
-    padding: 0.6rem;
-  }
-  
-  .card-title {
-    font-size: 0.8rem;
-  }
-  
-  .list-unstyled li {
-    font-size: 0.8rem;
-  }
-}
-</style>
-
-<script>
-function toggleFilters3() {
-  const filterButtons = document.getElementById('filterButtons3');
-  filterButtons.style.display = filterButtons.style.display === 'none' ? 'block' : 'none';
-}
-
-function toggleCards3() {
-  const packageCards = document.getElementById('package-cards3');
-  const toggleText = document.getElementById('toggleText3');
-  
-  if (packageCards.style.display === 'none') {
-    packageCards.style.display = 'flex';
-    toggleText.textContent = 'Sembunyikan';
-  } else {
-    packageCards.style.display = 'none';
-    toggleText.textContent = 'Tampilkan';
-  }
-}
-
-fetch('birthday/birthday.json')
-  .then(response => response.json())
-  .then(packages => {
-    const packageCards = document.getElementById('package-cards3');
-    const filterButtons = document.getElementById('filterButtons3');
-    
-    // Membuat Set untuk menyimpan kategori unik
-    const categories = new Set();
-    packages.packages.forEach(pkg => categories.add(pkg.title));
-    
-    // Menambahkan tombol filter untuk setiap kategori
-    categories.forEach(category => {
-      const button = document.createElement('button');
-      button.className = 'btn btn-outline-primary me-2 filter-btn';
-      button.setAttribute('data-filter', category);
-      button.textContent = category;
-      filterButtons.appendChild(button);
-    });
-    
-    packages.packages.forEach(pkg => {
-      const card = document.createElement('div');
-      card.className = 'col-6 col-md-4 col-lg-3 package-card';
-      card.setAttribute('data-category', pkg.title);
-      
-      const cardContent = `
-        <div class="card h-100 ${pkg.featured ? 'shadow' : 'shadow-sm'}" ${pkg.featured ? 'style="transform: scale(1.03);"' : ''}>
-          <img src="${pkg.image}" class="card-img-top" alt="${pkg.title}">
-          <div class="card-body text-center">
-            <h5 class="card-title">${pkg.title}</h5>
-            <p class="card-text">${pkg.price}</p>
-            <div class="d-grid gap-2">
-              <a href="${pkg.link}" target="_blank" class="btn btn-outline-primary">Preview</a>
-              <a href="https://wa.me/6285172121407?text=Halo%20kataSemata.%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.title)}%20dengan%20kategori%20${encodeURIComponent(pkg.category)}%20dengan%20link%20preview%20${encodeURIComponent(pkg.link)}%20dengan%20harga%20${encodeURIComponent(pkg.price)}" target="_blank" class="btn btn-primary">Pesan via WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      card.innerHTML = cardContent;
-      packageCards.appendChild(card);
-    });
-
-    const filterBtns = document.querySelectorAll('#filterButtons3 .filter-btn');
-    const cards = document.querySelectorAll('#package-cards3 .package-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const filter = btn.getAttribute('data-filter');
-        
-        cards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.classList.remove('hide');
-          } else {
-            card.classList.add('hide');
-          }
-        });
-      });
-    });
-
-    document.querySelector('#filterButtons3 [data-filter="all"]').click();
-  })
-  .catch(error => {
-    console.error('Error loading wedding.json:', error);
-  });
-</script>
-<!-- end section 3 -->
-
-
-<!-- Section 4 -->
-<div class="container-fluid p-0">
-  <section id="section4" class="min-vh-100 d-flex align-items-center section4 pb-4 mb-4 mt-5 pt-5" style="background-color: #F8F9FA; margin-bottom: 80px;">
-    <div class="container py-4">
-      <h1 class="display-4 fw-bold fst-italic mb-3 section4-title" style="font-family: 'Montserrat';">
-        Graduation<br>Invitation</h1>
-
-                <!--SCROLLING BANNER-->
-        <div class="runningtext-graduation mb-4">
-          <div class="runningtext-graduation-content">
-            <!--<span>🎉 Promo Spesial Bulan Ini! Dapatkan Diskon 25% untuk Undangan Digital Premium ✨ Buat Momen Spesialmu Lebih Berkesan dengan Desain Eksklusif 💝 Promo Terbatas! 🎊
-            </span>-->
-            <span>🎉 Belum Ada Promo untuk Bulan Ini untuk Graduation Invitation! Tetap Pantau Terus Halaman Ini dan tanya-tanya ke admin untuk Mendapatkan Info Terbaru ✨ Buat Momen Spesialmu Lebih Berkesan dengan Desain Eksklusif 💝 Stay Tuned! 🎊
-            </span>
-          </div>
-        </div>
-        <style>
-        .runningtext-graduation {
-        background: linear-gradient(135deg, cyan, #0D6EFD);
-        color: white;
-        padding: 0.8rem;
-        overflow: hidden;
-        position: relative;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        border-radius: 8px;
-        }
-        .runningtext-graduation-content {
-        display: flex;
-        white-space: nowrap;
-        gap: 1rem;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-        }
-        .runningtext-graduation-content span {
-        padding: 0 2rem;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-          /* Starting position */
-        transform:translateX(0%);
-        /* Apply animation to this element */
-        animation: scrollText 40s linear infinite;
-        }
-        @keyframes scrollText {
-        0%   {
-        transform: translateX(20%); 		
-        }
-        100% {
-        transform: translateX(-100%); 
-        }
-        }
-        </style>
-        <!--END SCROLLING BANNER-->
-
-      <div class="text-center mb-3">
-        <button class="btn btn-outline-primary me-2" onclick="toggleFilters4()">
-          <i class="bi bi-funnel"></i> Filter
-        </button>
-        <button class="btn btn-outline-primary me-2" onclick="toggleCards4()">
-          <i class="bi bi-eye"></i> <span id="toggleText4">Tampilkan</span>
-        </button>
-        <div id="filterButtons4" class="filter-buttons" style="display: none;">
-          <button class="btn btn-outline-primary me-2 filter-btn active" data-filter="all">Semua</button>
-        </div>
-      </div>
-
-      <div class="row g-3" id="package-cards4" style="display: none;">
-      </div>
-    </div>
-  </section>
-</div>
-
-<style>
-  .section4-title {
-  overflow: hidden;
-  border-right: 0.15em solid #000;
-  white-space: nowrap;
-  animation: typing 5.5s cubic-bezier(0.4, 0, 0.2, 0.6) infinite,
-             blink-caret 0.75s ease-in-out infinite;
-  width: fit-content;
-  margin: 0 auto;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-  transition: all 0.5s ease;
-}
-.card {
-  border: none;
-  transition: transform 0.3s ease;
-  border-radius: 12px;
-  overflow: hidden;
-  max-width: 300px;
-  margin: 0 auto;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-}
-
-.card-img-top {
-  height: 250px;
-  object-fit: cover;
-  filter: brightness(0.9);
-  transition: filter 0.3s ease;
-}
-
-.card:hover .card-img-top {
-  filter: brightness(1);
-}
-
-.ribbon {
-  position: absolute;
-  top: 15px;
-  right: -25px;
-  transform: rotate(45deg);
-  background: #23f;
-  color: white;
-  padding: 4px 35px;
-  font-size: 0.85rem;
-  font-weight: bold;
-}
-
-.btn-primary {
-  padding: 8px 20px;
-  border-radius: 20px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.btn-primary:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.filter-buttons {
-  margin-top: 1rem;
-  transition: all 0.3s ease;
-}
-
-.filter-btn {
-  margin-bottom: 0.75rem;
-  border-radius: 15px;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.filter-btn.active {
-  background-color: #0d6efd;
-  color: white;
-}
-
-.package-card {
-  transition: all 0.3s ease;
-}
-
-.package-card.hide {
-  display: none;
-}
-
-.card-body {
-  background: rgba(255,255,255,0.9);
-  padding: 1rem;
-}
-
-.card-title {
-  color: #333;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.card-text {
-  color: #0d6efd;
-  font-weight: bold;
-  font-size: 1rem;
-}
-
-@media (max-width: 1200px) {
-  .card-body {
-    padding: 0.9rem;
-  }
-  
-  .card-title {
-    font-size: 0.95rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .card-body {
-    padding: 0.8rem;
-  }
-  
-  .card-title {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .card-body {
-    padding: 0.7rem;
-  }
-  
-  .card-title {
-    font-size: 0.85rem;
-  }
-  
-  .btn-primary {
-    padding: 6px 15px;
-    font-size: 0.85rem;
-  }
-  
-  .list-unstyled li {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .card-body {
-    padding: 0.6rem;
-  }
-  
-  .card-title {
-    font-size: 0.8rem;
-  }
-  
-  .list-unstyled li {
-    font-size: 0.8rem;
-  }
-}
-</style>
-
-<script>
-function toggleFilters4() {
-  const filterButtons = document.getElementById('filterButtons4');
-  filterButtons.style.display = filterButtons.style.display === 'none' ? 'block' : 'none';
-}
-
-function toggleCards4() {
-  const packageCards = document.getElementById('package-cards4');
-  const toggleText = document.getElementById('toggleText4');
-  
-  if (packageCards.style.display === 'none') {
-    packageCards.style.display = 'flex';
-    toggleText.textContent = 'Sembunyikan';
-  } else {
-    packageCards.style.display = 'none';
-    toggleText.textContent = 'Tampilkan';
-  }
-}
-
-fetch('graduation/graduation.json')
-  .then(response => response.json())
-  .then(packages => {
-    const packageCards = document.getElementById('package-cards4');
-    const filterButtons = document.getElementById('filterButtons4');
-    
-    // Membuat Set untuk menyimpan kategori unik
-    const categories = new Set();
-    packages.packages.forEach(pkg => categories.add(pkg.title));
-    
-    // Menambahkan tombol filter untuk setiap kategori
-    categories.forEach(category => {
-      const button = document.createElement('button');
-      button.className = 'btn btn-outline-primary me-2 filter-btn';
-      button.setAttribute('data-filter', category);
-      button.textContent = category;
-      filterButtons.appendChild(button);
-    });
-    
-    packages.packages.forEach(pkg => {
-      const card = document.createElement('div');
-      card.className = 'col-6 col-md-4 col-lg-3 package-card';
-      card.setAttribute('data-category', pkg.title);
-      
-      const cardContent = `
-        <div class="card h-100 ${pkg.featured ? 'shadow' : 'shadow-sm'}" ${pkg.featured ? 'style="transform: scale(1.03);"' : ''}>
-          <img src="${pkg.image}" class="card-img-top" alt="${pkg.title}">
-          <div class="card-body text-center">
-            <h5 class="card-title">${pkg.title}</h5>
-            <p class="card-text">${pkg.price}</p>
-            <div class="d-grid gap-2">
-              <a href="${pkg.link}" target="_blank" class="btn btn-outline-primary">Preview</a>
-              <a href="https://wa.me/6285172121407?text=Halo%20kataSemata.%20saya%20tertarik%20dengan%20${encodeURIComponent(pkg.title)}%20dengan%20kategori%20${encodeURIComponent(pkg.category)}%20dengan%20link%20preview%20${encodeURIComponent(pkg.link)}%20dengan%20harga%20${encodeURIComponent(pkg.price)}" target="_blank" class="btn btn-primary">Pesan via WhatsApp</a>
-            </div>
-          </div>
-        </div>
-      `;
-      
-      card.innerHTML = cardContent;
-      packageCards.appendChild(card);
-    });
-
-    const filterBtns = document.querySelectorAll('#filterButtons4 .filter-btn');
-    const cards = document.querySelectorAll('#package-cards4 .package-card');
-
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const filter = btn.getAttribute('data-filter');
-        
-        cards.forEach(card => {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.classList.remove('hide');
-          } else {
-            card.classList.add('hide');
-          }
-        });
-      });
-    });
-
-    document.querySelector('#filterButtons4 [data-filter="all"]').click();
-  })
-  .catch(error => {
-    console.error('Error loading wedding.json:', error);
-  });
-</script>
-<!-- end section 4 -->
 
 
 <!-- Navbar Bottom -->
