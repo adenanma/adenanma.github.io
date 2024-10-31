@@ -92,46 +92,84 @@
 
           <style>
           .video-banner {
-            border-radius: clamp(8px, 2vw, 20px);
+            border-radius: clamp(6px, 2vw, 24px);
             overflow: hidden;
             position: relative;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            box-shadow: 0 clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px) rgba(0,0,0,0.15);
             width: 100%;
-            max-width: min(800px, 92vw);
+            max-width: min(900px, 94vw);
             margin: 0 auto;
             transition: all 0.4s ease;
           }
 
+          @media (max-width: 1200px) {
+            .video-banner {
+              max-width: 92vw;
+            }
+          }
+
+          @media (max-width: 992px) {
+            .video-banner {
+              max-width: 94vw;
+              border-radius: clamp(6px, 1.5vw, 20px);
+            }
+          }
+
           @media (max-width: 768px) {
             .video-banner {
-              max-width: 95vw;
-              border-radius: 8px;
+              max-width: 96vw;
+              border-radius: clamp(4px, 1vw, 16px);
+            }
+          }
+
+          @media (max-width: 576px) {
+            .video-banner {
+              max-width: 98vw;
+              border-radius: 6px;
             }
           }
 
           .video-banner:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+            transform: translateY(clamp(-4px, -0.5vw, -2px));
+            box-shadow: 0 clamp(8px, 1.5vw, 12px) clamp(16px, 3vw, 24px) rgba(0,0,0,0.2);
           }
 
           @media (hover: none) {
             .video-banner:hover {
               transform: none;
-              box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+              box-shadow: 0 clamp(4px, 1vw, 8px) clamp(8px, 2vw, 16px) rgba(0,0,0,0.15);
             }
           }
 
           .card-video {
             width: 100%;
-            height: clamp(300px, 85vh, 1200px); /* Ditingkatkan dari 70vh ke 85vh */
+            height: clamp(250px, 90vh, 1400px);
             object-fit: cover;
             filter: brightness(0.85);
             transition: all 0.4s ease;
           }
 
+          @media (max-width: 1200px) {
+            .card-video {
+              height: clamp(250px, 85vh, 1200px);
+            }
+          }
+
+          @media (max-width: 992px) {
+            .card-video {
+              height: clamp(250px, 80vh, 1000px);
+            }
+          }
+
+          @media (max-width: 768px) {
+            .card-video {
+              height: clamp(200px, 75vh, 900px);
+            }
+          }
+
           @media (max-width: 576px) {
             .card-video {
-              height: clamp(250px, 75vh, 1000px); /* Ditingkatkan dari 60vh ke 75vh */
+              height: clamp(180px, 70vh, 800px);
             }
           }
 
@@ -363,7 +401,13 @@
 
           <script>
           // Set the date we're counting down to (30 days from now)
-          const countDownDate = new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
+          const savedDate = localStorage.getItem('countDownDate');
+          const countDownDate = savedDate ? parseInt(savedDate) : new Date().getTime() + (30 * 24 * 60 * 60 * 1000);
+
+          // Simpan tanggal ke localStorage jika belum ada
+          if (!savedDate) {
+            localStorage.setItem('countDownDate', countDownDate.toString());
+          }
 
           // Update the countdown every 1 second
           const x = setInterval(function() {
@@ -383,6 +427,7 @@
             if (distance < 0) {
               clearInterval(x);
               document.getElementById("countdown").innerHTML = "EXPIRED";
+              localStorage.removeItem('countDownDate');
             }
           }, 1000);
           </script>
