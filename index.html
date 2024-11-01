@@ -1967,13 +1967,10 @@ end section 5 -->
 <!-- Navbar Bottom -->
 <div class="mb-5 pb-5">
   <nav class="navbar fixed-bottom">
-    <div class="container-fluid d-flex justify-content-center">
+    <div class="container-fluid d-flex justify-content-start">
       <div class="nav-popup">
         <button class="nav-toggle" onclick="toggleNav()">
           <i class="bi bi-list fs-2"></i>
-          <div class="trash-animation">
-            <i class="bi bi-trash"></i>
-          </div>
         </button>
         <div class="nav-content" id="navContent">
   
@@ -2024,8 +2021,7 @@ end section 5 -->
   .nav-popup {
     position: fixed;
     bottom: max(20px, 3vh);
-    left: 50%;
-    transform: translateX(-50%);
+    left: 20px;
     z-index: 1000;
     width: 90%;
     max-width: 400px;
@@ -2044,37 +2040,9 @@ end section 5 -->
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
+    margin: 0;
     position: relative;
     overflow: hidden;
-  }
-
-  .trash-animation {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .trash-animation.show {
-    animation: trashEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  @keyframes trashEffect {
-    0% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(1.2);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(-50%, 100%) scale(0.8);
-      opacity: 0;
-    }
   }
   
   .nav-toggle i {
@@ -2094,8 +2062,7 @@ end section 5 -->
   .nav-content {
     position: absolute;
     bottom: 110%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     background: rgba(255, 255, 255, 0.98);
     border-radius: clamp(12px, 3vw, 16px);
     padding: clamp(0.8rem, 2vw, 1rem);
@@ -2103,7 +2070,7 @@ end section 5 -->
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translate(-50%, 20px) scale(0.95);
+    transform: translateY(20px) scale(0.95);
     flex-direction: column;
     gap: clamp(0.3rem, 1.5vw, 0.5rem);
     width: 90vw;
@@ -2115,7 +2082,7 @@ end section 5 -->
   .nav-content.show {
     opacity: 1;
     visibility: visible;
-    transform: translate(-50%, 0) scale(1);
+    transform: translateY(0) scale(1);
     display: flex;
   }
   
@@ -2273,14 +2240,8 @@ end section 5 -->
   <script>
   function toggleNav() {
     const navContent = document.getElementById('navContent');
-    const trashAnimation = document.querySelector('.trash-animation');
-    
     if (navContent.classList.contains('show')) {
-      trashAnimation.classList.add('show');
-      setTimeout(() => {
-        navContent.classList.remove('show');
-        trashAnimation.classList.remove('show');
-      }, 400);
+      navContent.classList.remove('show');
     } else {
       navContent.classList.add('show');
     }
@@ -2300,12 +2261,7 @@ end section 5 -->
     const navPopup = document.querySelector('.nav-popup');
     
     if (!navPopup.contains(e.target) && navContent.classList.contains('show')) {
-      const trashAnimation = document.querySelector('.trash-animation');
-      trashAnimation.classList.add('show');
-      setTimeout(() => {
-        navContent.classList.remove('show');
-        trashAnimation.classList.remove('show');
-      }, 400);
+      navContent.classList.remove('show');
       document.querySelectorAll('.has-submenu').forEach(item => {
         item.classList.remove('active');
       });
@@ -2313,6 +2269,186 @@ end section 5 -->
   });
   </script>
   </div>
+
+
+<!-- WhatsApp Floating Button -->
+<div class="whatsapp-float">
+  <div class="online-badge">
+    <span class="pulse"></span>
+    Online
+  </div>
+  <a href="#" class="whatsapp-button" id="whatsappButton" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+</div>
+
+<style>
+.whatsapp-float {
+  position: fixed;
+  bottom: max(20px, 3vh); /* Sejajar dengan nav-popup */
+  right: 20px;
+  z-index: 1000;
+}
+
+.whatsapp-button {
+  width: clamp(45px, 12vw, 60px); /* Ukuran sama dengan nav-toggle */
+  height: clamp(45px, 12vw, 60px);
+  border-radius: 50%;
+  background: #25D366;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  transform: scale(1.05); /* Efek hover sama dengan nav-toggle */
+  color: white;
+  background: #22c35e;
+}
+
+.whatsapp-button i {
+  font-size: clamp(1.5rem, 4vw, 2rem); /* Ukuran icon sama dengan nav-toggle */
+}
+
+.online-badge {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #198754;
+  color: white;
+  padding: clamp(2px, 1vw, 3px) clamp(8px, 2vw, 10px);
+  border-radius: clamp(8px, 2vw, 12px);
+  font-size: clamp(10px, 2.5vw, 12px);
+  display: flex;
+  align-items: center;
+  gap: clamp(3px, 1vw, 5px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  white-space: nowrap;
+}
+
+.pulse {
+  display: inline-block;
+  width: clamp(6px, 1.5vw, 8px);
+  height: clamp(6px, 1.5vw, 8px);
+  border-radius: 50%;
+  background: #fff;
+  position: relative;
+}
+
+.pulse::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: red;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .whatsapp-float {
+    bottom: max(20px, 3vh); /* Sejajar dengan nav di mobile */
+  }
+  
+  .whatsapp-button {
+    width: clamp(40px, 10vw, 50px); /* Ukuran sama dengan nav-toggle di mobile */
+    height: clamp(40px, 10vw, 50px);
+  }
+  
+  .whatsapp-button i {
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+  }
+
+  .online-badge {
+    top: -20px;
+    padding: 2px 8px;
+    font-size: 10px;
+    gap: 3px;
+  }
+
+  .pulse {
+    width: 6px;
+    height: 6px;
+  }
+}
+</style>
+
+<script>
+// Daftar nomor WhatsApp admin berdasarkan hari
+const adminWhatsApp = {
+  0: { number: "6285172121407", name: "Admin Dinda" }, // Minggu
+  1: { number: "6281234567890", name: "Admin Rara" }, // Senin
+  2: { number: "6289876543210", name: "Admin Putri" }, // Selasa  
+  3: { number: "6282345678901", name: "Admin Sari" }, // Rabu
+  4: { number: "6283456789012", name: "Admin Maya" }, // Kamis
+  5: { number: "6285172121407", name: "Admin Dinda" }, // Jumat
+  6: { number: "6285678901234", name: "Admin Rina" }  // Sabtu
+};
+
+// Fungsi untuk mengupdate link WhatsApp berdasarkan hari
+function updateWhatsAppLink() {
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+  const hours = today.getHours();
+  const admin = adminWhatsApp[dayOfWeek];
+  const whatsappButton = document.getElementById('whatsappButton');
+
+  // Menyiapkan pesan berdasarkan waktu
+  let greeting = '';
+  if (hours >= 5 && hours < 11) {
+    greeting = 'Selamat pagi';
+  } else if (hours >= 11 && hours < 15) {
+    greeting = 'Selamat siang';
+  } else if (hours >= 15 && hours < 18) {
+    greeting = 'Selamat sore';
+  } else {
+    greeting = 'Selamat malam';
+  }
+
+  // Template pesan lengkap
+  const message = encodeURIComponent(
+    `${greeting} ${admin.name} dari kataSemata. \n\n` +
+    `Saya tertarik dengan layanan undangan digital kataSemata.\n` +
+    `Mohon informasi lebih lanjut mengenai: \n\n` +
+    `1. Pilihan desain yang tersedia\n` +
+    `2. Harga dan paket layanan\n` +
+    `3. Proses pembuatan dan waktu pengerjaan\n` +
+    `4. Fitur-fitur yang ditawarkan\n\n` +
+    `Terima kasih `
+  );
+
+  whatsappButton.href = `https://wa.me/${admin.number}?text=${message}`;
+}
+
+// Update link saat halaman dimuat
+updateWhatsAppLink();
+
+// Update link setiap hari pada pukul 00:00
+setInterval(() => {
+  const now = new Date();
+  if (now.getHours() === 0 && now.getMinutes() === 0) {
+    updateWhatsAppLink();
+  }
+}, 60000); // Cek setiap menit
+</script>
 
 
 </body>
