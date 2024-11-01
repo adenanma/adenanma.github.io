@@ -2484,18 +2484,20 @@ end section 5 -->
 const whatsappConfig = {
   admins: [
     {
-      name: 'Admin 1',
+      tugas: 'Admin 1',
+      nama: 'MADINA',
       phone: '6285172121407', 
       schedule: {
-        weekday: {start: '09:00', end: '12:00'},
-        weekend: {start: '09:00', end: '12:00'}
+        weekday: {start: '09:00', end: '13:00'},
+        weekend: {start: '09:00', end: '13:00'}
       },
       isOnDuty: false,
       avatar: '👩🏻‍💼'
     },
     {
-      name: 'Admin 2',
-      phone: '6287654321098', 
+      tugas: 'Admin 2',
+      nama: 'MADNN',
+      phone: '6285172121407', 
       schedule: {
         weekday: {start: '13:00', end: '23:00'},
         weekend: {start: '13:00', end: '23:00'}
@@ -2503,8 +2505,7 @@ const whatsappConfig = {
       isOnDuty: false,
       avatar: '👨🏻‍💼'
     }
-  ],
-  defaultMessage: 'Halo, saya tertarik dengan layanan undangan digital kataSemata. Saya ingin membuat undangan untuk acara pernikahan/ulang tahun/khitanan/aqiqah/wisuda/syukuran/halal bihalal. Mohon informasi lebih lanjut mengenai harga dan fitur-fiturnya. Terima kasih.'
+  ]
 };
 
 // Fungsi untuk mengecek jadwal admin yang bertugas
@@ -2537,8 +2538,8 @@ function updateOnlineBadge() {
   if (activeAdmin) {
     onlineBadge.style.backgroundColor = '#00ff00';
     onlineBadge.style.animation = 'pulse 2s infinite';
-    onlineBadge.title = `${activeAdmin.avatar} ${activeAdmin.name} sedang online`;
-    appDesc.innerHTML = `Chat dengan ${activeAdmin.name} ${activeAdmin.avatar}`;
+    onlineBadge.title = `${activeAdmin.avatar} ${activeAdmin.tugas} sedang online`;
+    appDesc.innerHTML = `Chat dengan ${activeAdmin.tugas} ${activeAdmin.avatar}`;
   } else {
     onlineBadge.style.backgroundColor = '#ff0000';
     onlineBadge.style.animation = 'none';
@@ -2548,55 +2549,73 @@ function updateOnlineBadge() {
 }
 
 // Inisialisasi dan update status setiap menit
-checkAdminSchedule();
-updateOnlineBadge();
-setInterval(() => {
+document.addEventListener('DOMContentLoaded', () => {
   checkAdminSchedule();
   updateOnlineBadge();
-}, 60000);
+  setInterval(() => {
+    checkAdminSchedule();
+    updateOnlineBadge();
+  }, 60000);
 
-// Handler ketika tombol WhatsApp diklik dengan efek visual
-document.querySelector('.edge-app').addEventListener('click', function() {
-  const activeAdmin = whatsappConfig.admins.find(admin => admin.isOnDuty);
-  
-  // Tambahkan efek klik
-  this.style.transform = 'scale(0.95)';
-  setTimeout(() => this.style.transform = 'scale(1)', 100);
-  
-  if (activeAdmin) {
-    const whatsappURL = `https://wa.me/${activeAdmin.phone}?text=${encodeURIComponent(whatsappConfig.defaultMessage)}`;
-    window.open(whatsappURL, '_blank');
-  } else {
-    Swal.fire({
-      title: '📱 Mohon Maaf',
-      html: `
-        ⏰ Saat ini admin kami sedang tidak bertugas.<br><br>
-        🗓️ Jam Operasional Kami:<br>
-        📅 Senin - Jumat: 09:00 - 12:00 WIB<br>
-        📅 Senin - Jumat: 13:00 - 23:00 WIB<br>
-        ⏰ 1 jam istirahat setiap hari<br>
-        📅 Senin - Minggu: 12:00 - 13:00 WIB<br><br>
-        📅 Sabtu & Minggu: 09:00 - 12:00 WIB<br>
-        📅 Sabtu & Minggu: 13:00 - 23:00 WIB<br><br>
-        💌 Pesan Anda sangat penting bagi kami.<br>
-        🙏 Silakan coba lagi pada jam operasional.<br>
-        ✨ Terima kasih atas pengertiannya.
-      `,
-      icon: 'info',
-      confirmButtonText: 'Tutup',
-      confirmButtonColor: '#0d6efd'
+  // Handler ketika tombol WhatsApp diklik dengan efek visual
+  const edgeApp = document.querySelector('.edge-app');
+  if (edgeApp) {
+    edgeApp.addEventListener('click', function() {
+      const activeAdmin = whatsappConfig.admins.find(admin => admin.isOnDuty);
+      
+      // Tambahkan efek klik
+      this.style.transform = 'scale(0.95)';
+      setTimeout(() => this.style.transform = 'scale(1)', 100);
+      
+      if (activeAdmin) {
+        // Update default message dengan nama admin yang sedang bertugas
+        whatsappConfig.defaultMessage = `${(() => {
+          const hour = new Date().getHours();
+          let greeting = '';
+          if (hour >= 3 && hour < 11) greeting = 'Selamat pagi';
+          else if (hour >= 11 && hour < 15) greeting = 'Selamat siang'; 
+          else if (hour >= 15 && hour < 18) greeting = 'Selamat sore';
+          else greeting = 'Selamat malam';
+          return greeting;
+        })()} Admin ${activeAdmin.nama} dari kataSemata.
+
+Saya ingin membuat undangan untuk acara pernikahan/ulang tahun/khitanan/aqiqah/wisuda/syukuran/halal bihalal.
+
+Saya tertarik dengan layanan undangan digital kataSemata.
+Mohon informasi lebih lanjut mengenai:
+
+1. Pilihan desain undangan
+2. Harga dan paket layanan
+3. Proses pembuatan dan waktu pengerjaan undangan
+4. Fitur-fitur yang ditawarkan
+
+Terima kasih.`;
+
+        const whatsappURL = `https://wa.me/${activeAdmin.phone}?text=${encodeURIComponent(whatsappConfig.defaultMessage)}`;
+        window.open(whatsappURL, '_blank');
+      } else {
+        Swal.fire({
+          title: 'Mohon Maaf',
+          html: `
+          Saat ini admin kami sedang tidak bertugas.
+          `,
+          icon: 'info',
+          confirmButtonText: 'Tutup',
+          confirmButtonColor: '#0d6efd'
+        });
+      }
+    });
+
+    // Tambahkan efek hover
+    edgeApp.addEventListener('mouseover', function() {
+      this.style.transform = 'scale(1.02)';
+      this.style.transition = 'transform 0.2s ease';
+    });
+
+    edgeApp.addEventListener('mouseout', function() {
+      this.style.transform = 'scale(1)';
     });
   }
-});
-
-// Tambahkan efek hover
-document.querySelector('.edge-app').addEventListener('mouseover', function() {
-  this.style.transform = 'scale(1.02)';
-  this.style.transition = 'transform 0.2s ease';
-});
-
-document.querySelector('.edge-app').addEventListener('mouseout', function() {
-  this.style.transform = 'scale(1)';
 });
 </script>
 <!--END SCRIPT WA-->
