@@ -2271,6 +2271,8 @@ end section 5 -->
   });
   </script>
   </div>
+<!--END SCRIPT NAVBAR-->
+
 
 <!--WA-->
 <div class="edge-panel">
@@ -2482,27 +2484,27 @@ end section 5 -->
 const whatsappConfig = {
   admins: [
     {
-      name: 'Customer Service 1', 
-      phone: '6285172121407',
+      name: 'Admin 1',
+      phone: '6285172121407', 
       schedule: {
-        weekday: {start: '08:00', end: '12:00'},
-        weekend: {start: '09:00', end: '15:00'}
+        weekday: {start: '09:00', end: '12:00'},
+        weekend: {start: '09:00', end: '12:00'}
       },
       isOnDuty: false,
       avatar: '👩🏻‍💼'
     },
     {
-      name: 'Customer Service 2',
+      name: 'Admin 2',
       phone: '6287654321098', 
       schedule: {
-        weekday: {start: '16:00', end: '23:00'},
-        weekend: {start: '14:00', end: '22:00'}
+        weekday: {start: '13:00', end: '23:00'},
+        weekend: {start: '13:00', end: '23:00'}
       },
       isOnDuty: false,
       avatar: '👨🏻‍💼'
     }
   ],
-  defaultMessage: 'Halo, saya ingin bertanya mengenai website ini. Mohon informasi lebih lanjut. Terima kasih.'
+  defaultMessage: 'Halo, saya tertarik dengan layanan undangan digital kataSemata. Saya ingin membuat undangan untuk acara pernikahan/ulang tahun/khitanan/aqiqah/wisuda/syukuran/halal bihalal. Mohon informasi lebih lanjut mengenai harga dan fitur-fiturnya. Terima kasih.'
 };
 
 // Fungsi untuk mengecek jadwal admin yang bertugas
@@ -2570,8 +2572,12 @@ document.querySelector('.edge-app').addEventListener('click', function() {
       html: `
         ⏰ Saat ini admin kami sedang tidak bertugas.<br><br>
         🗓️ Jam Operasional Kami:<br>
-        📅 Senin - Jumat: 08:00 - 23:00 WIB<br>
-        📅 Sabtu & Minggu: 09:00 - 22:00 WIB<br><br>
+        📅 Senin - Jumat: 09:00 - 12:00 WIB<br>
+        📅 Senin - Jumat: 13:00 - 23:00 WIB<br>
+        ⏰ 1 jam istirahat setiap hari<br>
+        📅 Senin - Minggu: 12:00 - 13:00 WIB<br><br>
+        📅 Sabtu & Minggu: 09:00 - 12:00 WIB<br>
+        📅 Sabtu & Minggu: 13:00 - 23:00 WIB<br><br>
         💌 Pesan Anda sangat penting bagi kami.<br>
         🙏 Silakan coba lagi pada jam operasional.<br>
         ✨ Terima kasih atas pengertiannya.
@@ -2593,10 +2599,45 @@ document.querySelector('.edge-app').addEventListener('mouseout', function() {
   this.style.transform = 'scale(1)';
 });
 </script>
+<!--END SCRIPT WA-->
 
 
+<!--SCRIPT STOP PLAGIAT-->
+<script>
+// Menonaktifkan fungsi copy paste pada seluruh body website
+document.addEventListener('DOMContentLoaded', function() {
+  // Mencegah copy paste
+  document.body.addEventListener('copy', function(e) {
+    e.preventDefault();
+    Swal.fire({
+      title: '⚠️ Perhatian',
+      text: 'Mohon maaf, fungsi copy paste dinonaktifkan pada website ini',
+      icon: 'warning',
+      confirmButtonText: 'Mengerti',
+      confirmButtonColor: '#0d6efd'
+    });
+  });
 
-
+  // Mencegah select text
+  document.body.style.userSelect = 'none';
+  document.body.style.webkitUserSelect = 'none';
+  document.body.style.msUserSelect = 'none';
+  document.body.style.mozUserSelect = 'none';
+  
+  // Klik kanan diaktifkan
+  // document.body.addEventListener('contextmenu', function(e) {
+  //   e.preventDefault();
+  //   Swal.fire({
+  //     title: '⚠️ Perhatian', 
+  //     text: 'Mohon maaf, fungsi klik kanan dinonaktifkan pada website ini',
+  //     icon: 'warning',
+  //     confirmButtonText: 'Mengerti',
+  //     confirmButtonColor: '#0d6efd'
+  //   });
+  // });
+});
+</script>
+<!--END SCRIPT STOP PLAGIAT-->
 
 </body>
 </html>
