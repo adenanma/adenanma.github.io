@@ -2658,5 +2658,40 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 <!--END SCRIPT STOP PLAGIAT-->
 
+<!--SCRIPT UNTUK BUAT PENOLAKAN UNTUK BUKA DI HANDPHONE SAJA-->
+<script>
+// Deteksi perangkat mobile
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Fungsi untuk menampilkan pesan peringatan
+function showMobileWarning() {
+  if (!isMobileDevice()) {
+    Swal.fire({
+      title: '⚠️ Perhatian',
+      text: 'Website ini hanya dapat diakses melalui perangkat mobile/smartphone',
+      icon: 'warning',
+      confirmButtonText: 'Mengerti',
+      confirmButtonColor: '#0d6efd',
+      allowOutsideClick: false
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "about:blank";
+      }
+    });
+  }
+}
+
+// Jalankan pengecekan saat halaman dimuat
+document.addEventListener('DOMContentLoaded', showMobileWarning);
+
+// Jalankan pengecekan saat ukuran window berubah
+window.addEventListener('resize', showMobileWarning);
+
+</script>
+
+
+
 </body>
 </html>
