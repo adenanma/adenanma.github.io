@@ -2395,12 +2395,12 @@ end section 5 -->
 // Daftar nomor WhatsApp admin berdasarkan hari
 const adminWhatsApp = {
   0: { number: "6285172121407", name: "Admin Dinda" }, // Minggu
-  1: { number: "6281234567890", name: "Admin Rara" }, // Senin
-  2: { number: "6289876543210", name: "Admin Putri" }, // Selasa  
-  3: { number: "6282345678901", name: "Admin Sari" }, // Rabu
-  4: { number: "6283456789012", name: "Admin Maya" }, // Kamis
+  1: { number: "6285172121407", name: "Admin Dinda" }, // Senin
+  2: { number: "6285172121407", name: "Admin Dinda" }, // Selasa  
+  3: { number: "6285172121407", name: "Admin Dinda" }, // Rabu
+  4: { number: "6285172121407", name: "Admin Dinda" }, // Kamis
   5: { number: "6285172121407", name: "Admin Dinda" }, // Jumat
-  6: { number: "6285678901234", name: "Admin Rina" }  // Sabtu
+  6: { number: "6285172121407", name: "Admin Dinda" }  // Sabtu
 };
 
 // Fungsi untuk mengupdate link WhatsApp berdasarkan hari
@@ -2435,19 +2435,17 @@ function updateWhatsAppLink() {
     `Terima kasih `
   );
 
-  whatsappButton.href = `https://wa.me/${admin.number}?text=${message}`;
+  // Menggunakan URL API WhatsApp yang lebih umum
+  whatsappButton.href = `https://api.whatsapp.com/send?phone=${admin.number}&text=${message}`;
 }
 
 // Update link saat halaman dimuat
-updateWhatsAppLink();
+document.addEventListener('DOMContentLoaded', function() {
+  updateWhatsAppLink();
+});
 
-// Update link setiap hari pada pukul 00:00
-setInterval(() => {
-  const now = new Date();
-  if (now.getHours() === 0 && now.getMinutes() === 0) {
-    updateWhatsAppLink();
-  }
-}, 60000); // Cek setiap menit
+// Update link setiap 1 jam
+setInterval(updateWhatsAppLink, 3600000);
 </script>
 
 
