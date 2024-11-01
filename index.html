@@ -54,8 +54,8 @@
                     <a href="https://wa.me/6281234567890" class="btn btn-success btn-sm mb-2 w-100 pulse-button">
                       <i class="fab fa-whatsapp"></i> Pesan Sekarang
                     </a>
-                    <button onclick="copyLink()" class="btn btn-light btn-sm w-100 hover-effect">
-                      <i class="fas fa-link"></i> Salin Link
+                    <button onclick="shareDiscount()" class="btn btn-light btn-sm w-100 hover-effect">
+                      <i class="fas fa-share-alt"></i> Bagikan Promo
                     </button>
                   </div>
                 </div>
@@ -491,12 +491,22 @@
             });
           }
 
-          async function copyLink() {
+          async function shareDiscount() {
+            const shareData = {
+              title: 'Promo Spesial kataSemata',
+              text: 'Dapatkan diskon spesial untuk undangan digital di kataSemata!',
+              url: window.location.href
+            };
+
             try {
-              await navigator.clipboard.writeText(window.location.href);
-              showToast('✨ Link berhasil disalin! ✨');
+              if (navigator.share) {
+                await navigator.share(shareData);
+                showToast('✨ Berhasil membagikan promo! ✨');
+              } else {
+                throw new Error('Web Share API not supported');
+              }
             } catch (err) {
-              showToast('❌ Gagal menyalin link', 'error');
+              showToast('❌ Gagal membagikan promo', 'error');
             }
           }
 
@@ -1952,313 +1962,357 @@ fetch('graduation/graduation.json')
 end section 5 -->
 
 
+
+
 <!-- Navbar Bottom -->
 <div class="mb-5 pb-5">
-<nav class="navbar fixed-bottom">
-  <div class="container-fluid">
-    <div class="nav-popup">
-      <button class="nav-toggle" onclick="toggleNav()">
-        <i class="bi bi-list fs-2"></i>
-      </button>
-      <div class="nav-content" id="navContent">
-
-        <!--MENU SUBMENU-->
-        <div class="nav-item has-submenu" onclick="toggleSubmenu(this)">
-          <div class="nav-icon-wrapper">
-            <i class="bi bi-card-text fs-4"></i>
+  <nav class="navbar fixed-bottom">
+    <div class="container-fluid d-flex justify-content-center">
+      <div class="nav-popup">
+        <button class="nav-toggle" onclick="toggleNav()">
+          <i class="bi bi-list fs-2"></i>
+          <div class="trash-animation">
+            <i class="bi bi-trash"></i>
           </div>
-          <span class="nav-title">Card</span>
-          <i class="bi bi-chevron-right submenu-arrow"></i>
-          <div class="submenu">
-            <a href="#section2" class="submenu-item">
-              <img src="icon/wedding.svg" alt="Wedding Icon" class="bi bi-heart fs-5">
-              <span>Wedding</span>
-            </a>
-            <a href="#section3" class="submenu-item">
-              <img src="icon/birthday.svg" alt="Birthday Icon" class="bi bi-gift fs-5">
-              <span>Birthday</span>
-            </a>
-            <a href="#section4" class="submenu-item">
-              <img src="icon/graduation.svg" alt="Graduation Icon" class="bi bi-mortarboard fs-5">
-              <span>Graduation</span>
-            </a>
+        </button>
+        <div class="nav-content" id="navContent">
+  
+          <!--MENU SUBMENU-->
+          <div class="nav-item has-submenu" onclick="toggleSubmenu(this)">
+            <div class="nav-icon-wrapper">
+              <i class="bi bi-card-text fs-4"></i>
+            </div>
+            <span class="nav-title">Card</span>
+            <i class="bi bi-chevron-right submenu-arrow"></i>
+            <div class="submenu">
+              <a href="#section2" class="submenu-item">
+                <img src="icon/wedding.svg" alt="Wedding Icon" class="bi bi-heart fs-5">
+                <span>Wedding</span>
+              </a>
+              <a href="#section3" class="submenu-item">
+                <img src="icon/birthday.svg" alt="Birthday Icon" class="bi bi-gift fs-5">
+                <span>Birthday</span>
+              </a>
+              <a href="#section4" class="submenu-item">
+                <img src="icon/graduation.svg" alt="Graduation Icon" class="bi bi-mortarboard fs-5">
+                <span>Graduation</span>
+              </a>
+            </div>
           </div>
+  
+          <a href="#" class="nav-item">
+            <div class="nav-icon-wrapper">
+              <i class="bi bi-house-fill fs-4"></i>
+            </div>
+            <span class="nav-title">Beranda</span>
+          </a>
+  
         </div>
-
-        <a href="#" class="nav-item">
-          <div class="nav-icon-wrapper">
-            <i class="bi bi-house-fill fs-4"></i>
-          </div>
-          <span class="nav-title">Beranda</span>
-        </a>
-
       </div>
     </div>
-  </div>
-</nav>
-
-<style>
-.navbar {
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
-  z-index: 1030;
-}
-
-.nav-popup {
-  position: fixed;
-  bottom: max(20px, 3vh);
-  left: max(20px, 3vw);
-  z-index: 1000;
-}
-
-.nav-toggle {
-  width: clamp(45px, 8vw, 60px);
-  height: clamp(45px, 8vw, 60px);
-  border-radius: 50%;
-  background: #0d6efd;
-  border: none;
-  color: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-toggle i {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-toggle:hover {
-  background: #0b5ed7;
-  transform: scale(1.05);
-}
-
-.nav-toggle:hover i {
-  transform: rotate(180deg);
-}
-
-.nav-content {
-  position: absolute;
-  bottom: 110%;
-  left: 0;
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: clamp(12px, 2vw, 16px);
-  padding: clamp(0.8rem, 1.5vw, 1rem);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateY(20px) scale(0.95);
-  flex-direction: column;
-  gap: clamp(0.3rem, 1vw, 0.5rem);
-  min-width: clamp(160px, 50vw, 200px);
-  backdrop-filter: blur(10px);
-  display: none;
-}
-
-.nav-content.show {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-  display: flex;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.5rem, 1.5vw, 1rem);
-  padding: clamp(0.5rem, 1.2vw, 0.75rem) clamp(0.75rem, 1.5vw, 1rem);
-  color: #6c757d;
-  text-decoration: none;
-  border-radius: clamp(6px, 1vw, 8px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  cursor: pointer;
-  font-size: clamp(0.875rem, 1.5vw, 1rem);
-}
-
-.nav-icon-wrapper {
-  width: clamp(28px, 5vw, 36px);
-  height: clamp(28px, 5vw, 36px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f8f9fa;
-  border-radius: 50%;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-icon-wrapper i {
-  font-size: clamp(1rem, 1.8vw, 1.25rem);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.submenu {
-  position: absolute;
-  left: 100%;
-  top: 0;
-  background: white;
-  border-radius: clamp(8px, 1.5vw, 12px);
-  padding: clamp(0.4rem, 1vw, 0.5rem);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-  min-width: clamp(140px, 40vw, 160px);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  transform: translateX(-20px);
-}
-
-.submenu-item {
-  display: flex;
-  align-items: center;
-  gap: clamp(0.5rem, 1vw, 0.75rem);
-  padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.75rem, 1.5vw, 1rem);
-  color: #6c757d;
-  text-decoration: none;
-  border-radius: clamp(4px, 1vw, 6px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: clamp(0.8rem, 1.4vw, 0.875rem);
-}
-
-.submenu-item img {
-  width: clamp(16px, 3vw, 20px);
-  height: auto;
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.nav-item:hover,
-.submenu-item:hover {
-  background: #f8f9fa;
-  color: #0d6efd;
-  transform: translateX(5px);
-}
-
-.submenu-item:hover img {
-  transform: scale(1.1);
-}
-
-.nav-item:hover .nav-icon-wrapper {
-  background: #e9ecef;
-  transform: rotate(5deg);
-}
-
-.nav-item:hover .nav-icon-wrapper i {
-  transform: scale(1.1);
-}
-
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
+  </nav>
+  
+  <style>
+  .navbar {
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    z-index: 1030;
+    width: 100%;
+  }
+  
   .nav-popup {
-    bottom: 15px;
-    left: 15px;
+    position: fixed;
+    bottom: max(20px, 3vh);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  .nav-toggle {
+    width: clamp(45px, 12vw, 60px);
+    height: clamp(45px, 12vw, 60px);
+    border-radius: 50%;
+    background: #0d6efd;
+    border: none;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .trash-animation {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .trash-animation.show {
+    animation: trashEffect 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes trashEffect {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.2);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, 100%) scale(0.8);
+      opacity: 0;
+    }
+  }
+  
+  .nav-toggle i {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .nav-toggle:hover {
+    background: #0b5ed7;
+    transform: scale(1.05);
+  }
+  
+  .nav-toggle:hover i {
+    transform: rotate(180deg);
   }
   
   .nav-content {
-    min-width: 140px;
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: clamp(12px, 3vw, 16px);
+    padding: clamp(0.8rem, 2vw, 1rem);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translate(-50%, 20px) scale(0.95);
+    flex-direction: column;
+    gap: clamp(0.3rem, 1.5vw, 0.5rem);
+    width: 90vw;
+    max-width: 300px;
+    backdrop-filter: blur(10px);
+    display: none;
+  }
+  
+  .nav-content.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0) scale(1);
+    display: flex;
+  }
+  
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 2vw, 1rem);
+    padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
+    color: #6c757d;
+    text-decoration: none;
+    border-radius: clamp(6px, 1.5vw, 8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+    font-size: clamp(0.875rem, 2vw, 1rem);
+    width: 100%;
+  }
+  
+  .nav-icon-wrapper {
+    width: clamp(28px, 8vw, 36px);
+    height: clamp(28px, 8vw, 36px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .nav-icon-wrapper i {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .submenu {
-    position: static;
-    box-shadow: none;
-    padding-left: 1.5rem;
-    margin-top: 0.3rem;
+    width: 100%;
+    background: white;
+    border-radius: clamp(8px, 2vw, 12px);
+    padding: clamp(0.4rem, 1.5vw, 0.5rem);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0.5rem;
     display: none;
-    transform: none;
-    min-width: 100%;
-  }
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-  .nav-popup {
-    bottom: 20px;
-    left: 20px;
-  }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-  .nav-popup {
-    bottom: 25px;
-    left: 25px;
   }
   
-  .nav-content {
-    min-width: 180px;
+  .submenu-item {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    padding: clamp(0.4rem, 1.5vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
+    color: #6c757d;
+    text-decoration: none;
+    border-radius: clamp(4px, 1.5vw, 6px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: clamp(0.8rem, 2vw, 0.875rem);
+    width: 100%;
   }
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-  .nav-popup {
-    bottom: 30px;
-    left: 30px;
+  
+  .submenu-item img {
+    width: clamp(16px, 5vw, 20px);
+    height: auto;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-  .nav-popup {
-    bottom: 35px;
-    left: 35px;
+  
+  .nav-item:hover,
+  .submenu-item:hover {
+    background: #f8f9fa;
+    color: #0d6efd;
+    transform: translateX(5px);
   }
-}
-
-.has-submenu.active .submenu {
-  display: block;
-  opacity: 1;
-  visibility: visible;
-  animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
+  
+  .submenu-item:hover img {
+    transform: scale(1.1);
   }
-  to {
+  
+  .nav-item:hover .nav-icon-wrapper {
+    background: #e9ecef;
+    transform: rotate(5deg);
+  }
+  
+  .nav-item:hover .nav-icon-wrapper i {
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 576px) {
+    .nav-popup {
+      width: 95%;
+    }
+    
+    .nav-content {
+      width: 95vw;
+    }
+    
+    .nav-toggle {
+      width: clamp(40px, 10vw, 50px);
+      height: clamp(40px, 10vw, 50px);
+    }
+    
+    .submenu {
+      position: static;
+      margin-left: 1rem;
+    }
+  }
+  
+  @media (min-width: 577px) and (max-width: 768px) {
+    .nav-popup {
+      width: 85%;
+    }
+    
+    .nav-content {
+      width: 85vw;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .nav-popup {
+      width: 80%;
+    }
+    
+    .nav-content {
+      width: 300px;
+    }
+    
+    .submenu {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      width: auto;
+      margin-top: 0;
+      margin-left: 0.5rem;
+    }
+  }
+  
+  .has-submenu.active .submenu {
+    display: block;
     opacity: 1;
-    transform: translateY(0);
+    visibility: visible;
+    animation: slideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   }
-}
-</style>
-
-<script>
-function toggleNav() {
-  const navContent = document.getElementById('navContent');
-  navContent.classList.toggle('show');
-}
-
-function toggleSubmenu(element) {
-  document.querySelectorAll('.has-submenu').forEach(item => {
-    if(item !== element && item.classList.contains('active')) {
-      item.classList.remove('active');
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  </style>
+  
+  <script>
+  function toggleNav() {
+    const navContent = document.getElementById('navContent');
+    const trashAnimation = document.querySelector('.trash-animation');
+    
+    if (navContent.classList.contains('show')) {
+      trashAnimation.classList.add('show');
+      setTimeout(() => {
+        navContent.classList.remove('show');
+        trashAnimation.classList.remove('show');
+      }, 400);
+    } else {
+      navContent.classList.add('show');
+    }
+  }
+  
+  function toggleSubmenu(element) {
+    document.querySelectorAll('.has-submenu').forEach(item => {
+      if(item !== element && item.classList.contains('active')) {
+        item.classList.remove('active');
+      }
+    });
+    element.classList.toggle('active');
+  }
+  
+  document.addEventListener('click', (e) => {
+    const navContent = document.getElementById('navContent');
+    const navPopup = document.querySelector('.nav-popup');
+    
+    if (!navPopup.contains(e.target) && navContent.classList.contains('show')) {
+      const trashAnimation = document.querySelector('.trash-animation');
+      trashAnimation.classList.add('show');
+      setTimeout(() => {
+        navContent.classList.remove('show');
+        trashAnimation.classList.remove('show');
+      }, 400);
+      document.querySelectorAll('.has-submenu').forEach(item => {
+        item.classList.remove('active');
+      });
     }
   });
-  element.classList.toggle('active');
-}
-
-document.addEventListener('click', (e) => {
-  const navContent = document.getElementById('navContent');
-  const navPopup = document.querySelector('.nav-popup');
-  
-  if (!navPopup.contains(e.target) && navContent.classList.contains('show')) {
-    navContent.classList.remove('show');
-    document.querySelectorAll('.has-submenu').forEach(item => {
-      item.classList.remove('active');
-    });
-  }
-});
-</script>
-</div>
-
-
-
-
+  </script>
+  </div>
 
 
 </body>
